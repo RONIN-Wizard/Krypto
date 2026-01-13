@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Krypto Esports | Our Competitors Weakness</title>
+    <title>Krypto Esports | Premier Competitive Gaming Organization</title>
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -354,6 +354,60 @@
             color: var(--text-gray);
         }
 
+        /* Achievements Section */
+        .achievements {
+            padding: 8rem 5%;
+            background: var(--dark-bg);
+        }
+
+        .achievements-container {
+            max-width: 1400px;
+            margin: 3rem auto 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .achievement-card {
+            background: var(--card-bg);
+            padding: 3rem 2rem;
+            border: 2px solid rgba(59, 183, 120, 0.2);
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .achievement-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-green);
+            box-shadow: 0 15px 50px rgba(59, 183, 120, 0.3);
+        }
+
+        .achievement-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            filter: grayscale(100%);
+            transition: filter 0.3s;
+        }
+
+        .achievement-card:hover .achievement-icon {
+            filter: grayscale(0%);
+        }
+
+        .achievement-card h3 {
+            font-size: 1.8rem;
+            color: var(--primary-green);
+            margin-bottom: 1rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .achievement-card p {
+            color: var(--text-gray);
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
         /* Content Grid */
         .content-section {
             padding: 8rem 5%;
@@ -370,38 +424,33 @@
 
         .content-card {
             position: relative;
-            height: 400px;
             background: var(--dark-bg);
             overflow: hidden;
-            cursor: pointer;
-            border: 1px solid rgba(59, 183, 120, 0.1);
+            border: 3px solid rgba(59, 183, 120, 0.3);
             transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
         }
 
         .content-card:hover {
             transform: translateY(-10px);
             border-color: var(--primary-green);
-            box-shadow: 0 20px 60px rgba(59, 183, 120, 0.3);
+            box-shadow: 0 20px 60px rgba(59, 183, 120, 0.4);
         }
 
-        .content-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
+        .video-card iframe {
             width: 100%;
-            height: 100%;
-            background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.9) 100%);
-            z-index: 1;
+            height: 300px;
+            border: none;
         }
 
         .content-card-content {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
             padding: 2rem;
-            z-index: 2;
+            background: var(--dark-bg);
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .content-card h3 {
@@ -533,7 +582,7 @@
                 <span style="color: #fff;">IS BACK</span>
             </h1>
             <p class="tagline">THE FASTEST GROWING ORG</p>
-            <p class="slogan">Our Competitors Weakness</p>
+            <p class="slogan">Excellence in Competition</p>
             <div class="cta-buttons">
                 <a href="#" class="btn btn-primary">JOIN THE TEAM</a>
                 <a href="#about" class="btn btn-secondary">LEARN MORE</a>
@@ -568,18 +617,18 @@
         <h2 class="section-title">The Return</h2>
         <div class="about-content">
             <div class="about-text">
-                <h3>Built Different From Day One</h3>
-                <p>Founded January 1st, 2024, Krypto took the Fortnite scene by storm. In just 6 months, we became the most sought-after non-tier 1 organization in the game. Players wanted to join us so badly, they'd take pay cuts or even join for free. That's not luck—that's culture.</p>
-                <p>We made every single grands. Every. Single. One. While other orgs struggled to stay relevant, we were setting the standard for content, player treatment, and competitive success.</p>
+                <h3>A Legacy of Excellence</h3>
+                <p>Founded on January 1st, 2024, Krypto Esports established itself as a premier force in competitive Fortnite. Our organization achieved an unprecedented 100% qualification rate to major tournaments, earning recognition as the leading independent esports organization in our category.</p>
+                <p>Our success stems from a commitment to player development, strategic excellence, and organizational integrity. We've built an ecosystem where talent thrives and championships are the standard—not the exception.</p>
                 
                 <div class="about-highlight">
-                    <h4>Our Vision</h4>
+                    <h4>Our Mission</h4>
                     <ul>
-                        <li>Build the most player-centric organization in esports</li>
-                        <li>Maintain 100% qualification rate to major tournaments</li>
-                        <li>Set the gold standard for content creation and fan engagement</li>
-                        <li>Develop talent that goes on to compete at the highest level</li>
-                        <li>Create a sustainable ecosystem that benefits everyone</li>
+                        <li>Cultivate world-class competitive talent through comprehensive support systems</li>
+                        <li>Maintain elite performance standards across all tournament circuits</li>
+                        <li>Deliver premium content that engages fans and elevates the esports experience</li>
+                        <li>Foster an environment where players can reach their full competitive potential</li>
+                        <li>Build sustainable partnerships that drive long-term organizational growth</li>
                     </ul>
                 </div>
             </div>
@@ -587,55 +636,85 @@
                 <div class="feature">
                     <div class="feature-icon">🏆</div>
                     <div class="feature-text">
-                        <h4>Unmatched Track Record</h4>
-                        <p>Made every grands in our first 6 months—a feat unmatched by any non-tier 1 org.</p>
+                        <h4>Proven Tournament Success</h4>
+                        <p>Perfect Grand Finals qualification record across our inaugural competitive season.</p>
                     </div>
                 </div>
                 <div class="feature">
                     <div class="feature-icon">⚡</div>
                     <div class="feature-text">
-                        <h4>Player-First Always</h4>
-                        <p>Top talent joined for less than market value because they believed in our mission.</p>
+                        <h4>Player-Centric Organization</h4>
+                        <p>Industry-leading support infrastructure designed to maximize player performance and career development.</p>
                     </div>
                 </div>
                 <div class="feature">
                     <div class="feature-icon">🎬</div>
                     <div class="feature-text">
-                        <h4>Industry-Leading Content</h4>
-                        <p>Consistent, high-quality content that kept fans engaged and sponsors happy.</p>
+                        <h4>Premium Content Production</h4>
+                        <p>Professional-grade content strategy that builds brand value and drives fan engagement.</p>
                     </div>
                 </div>
                 <div class="feature">
                     <div class="feature-icon">🚀</div>
                     <div class="feature-text">
-                        <h4>Rapid Ascension</h4>
-                        <p>From zero to the most respected non-tier 1 org in record time.</p>
+                        <h4>Strategic Growth</h4>
+                        <p>Data-driven approach to roster development and organizational expansion.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Achievements Section -->
+    <section class="achievements">
+        <h2 class="section-title">Competitive Excellence</h2>
+        <div class="achievements-container">
+            <div class="achievement-card">
+                <div class="achievement-icon">🏆</div>
+                <h3>Tournament Dominance</h3>
+                <p>100% Grand Finals qualification rate across all major competitive events during our inaugural season</p>
+            </div>
+            <div class="achievement-card">
+                <div class="achievement-icon">⭐</div>
+                <h3>Player Development</h3>
+                <p>Comprehensive support system featuring dedicated coaching, advanced analytics, and performance optimization</p>
+            </div>
+            <div class="achievement-card">
+                <div class="achievement-icon">🎯</div>
+                <h3>Strategic Excellence</h3>
+                <p>Data-driven approach to roster management and competitive strategy setting industry benchmarks</p>
+            </div>
+            <div class="achievement-card">
+                <div class="achievement-icon">🤝</div>
+                <h3>Community Leadership</h3>
+                <p>Building lasting connections through authentic fan engagement and grassroots esports development</p>
+            </div>
+        </div>
+    </section>
+
     <!-- Content Section -->
     <section class="content-section" id="content">
-        <h2 class="section-title">What's Coming</h2>
+        <h2 class="section-title">Featured Content</h2>
         <div class="content-grid">
-            <div class="content-card">
+            <div class="content-card video-card">
+                <iframe src="https://www.youtube.com/embed/26E_AsO5tww" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 <div class="content-card-content">
-                    <h3>Championship Roster</h3>
-                    <p>We're assembling a roster that will remind everyone why Krypto dominated. Big announcements coming soon.</p>
+                    <h3>Championship Highlights</h3>
+                    <p>Experience the defining moments of Krypto's competitive journey through our tournament highlights.</p>
                 </div>
             </div>
-            <div class="content-card">
+            <div class="content-card video-card">
+                <iframe src="https://www.youtube.com/embed/fHZE4DJohaA" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 <div class="content-card-content">
-                    <h3>Premium Content</h3>
-                    <p>The content machine is firing back up. Get ready for player spotlights, behind-the-scenes, and tournament coverage.</p>
+                    <h3>Player Spotlight</h3>
+                    <p>Get an exclusive behind-the-scenes look at the elite athletes driving Krypto's competitive success.</p>
                 </div>
             </div>
-            <div class="content-card">
+            <div class="content-card video-card">
+                <iframe src="https://www.youtube.com/embed/vyfPvoUItcg" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 <div class="content-card-content">
-                    <h3>Community Built Different</h3>
-                    <p>Fan events, giveaways, and exclusive access. We're building the strongest community in esports.</p>
+                    <h3>Tournament Coverage</h3>
+                    <p>Comprehensive analysis and commentary on the competitive matches that built our legacy.</p>
                 </div>
             </div>
         </div>
@@ -647,7 +726,7 @@
             <div class="footer-section">
                 <h4>KRYPTO ESPORTS</h4>
                 <p style="color: var(--text-gray); line-height: 1.8; font-size: 1.1rem;">
-                    Founded January 1st, 2024. Made every grands. The fastest growing org returns.
+                    Founded January 1st, 2024. Premier competitive gaming organization dedicated to excellence in esports.
                 </p>
             </div>
             <div class="footer-section">
@@ -660,8 +739,8 @@
             <div class="footer-section">
                 <h4>Get In Touch</h4>
                 <a href="mailto:contact@kryptoesports.gg">contact@kryptoesports.gg</a>
-                <a href="#">Apply as Player</a>
-                <a href="#">Partnership Inquiries</a>
+                <a href="#">Player Applications</a>
+                <a href="#">Partnership Opportunities</a>
             </div>
             <div class="footer-section">
                 <h4>Follow Us</h4>
@@ -674,7 +753,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 Krypto Esports. All rights reserved. | Our Competitors Weakness</p>
+            <p>&copy; 2026 Krypto Esports. All rights reserved. | Excellence in Competition</p>
         </div>
     </footer>
 
