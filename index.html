@@ -189,10 +189,6 @@
             filter: drop-shadow(0 0 30px rgba(59, 183, 120, 0.5));
         }
 
-        .hero .tagline {
-            display: none;
-        }
-
         .hero .slogan {
             font-size: 2.2rem;
             color: var(--primary-green);
@@ -278,7 +274,7 @@
         }
 
         .news-carousel-container {
-            height: 420px;
+            height: 840px;
             overflow: hidden;
             position: relative;
         }
@@ -372,11 +368,6 @@
             transform: scale(1.1);
         }
 
-        .carousel-arrow:disabled {
-            opacity: 0.3;
-            cursor: not-allowed;
-        }
-
         .carousel-dots {
             display: flex;
             gap: 0.5rem;
@@ -400,15 +391,7 @@
         /* Stats Section */
         .stats {
             padding: 5rem 5%;
-            background: 
-                linear-gradient(rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.98)),
-                repeating-linear-gradient(
-                    45deg,
-                    transparent,
-                    transparent 20px,
-                    rgba(59, 183, 120, 0.1) 20px,
-                    rgba(59, 183, 120, 0.1) 40px
-                );
+            background: #fff;
             color: #000;
         }
 
@@ -453,14 +436,6 @@
             padding: 8rem 5%;
             max-width: 1200px;
             margin: 0 auto;
-            background: 
-                repeating-linear-gradient(
-                    45deg,
-                    transparent,
-                    transparent 20px,
-                    rgba(59, 183, 120, 0.05) 20px,
-                    rgba(59, 183, 120, 0.05) 40px
-                );
         }
 
         .section-title {
@@ -575,20 +550,8 @@
         /* Achievements Section */
         .achievements {
             padding: 8rem 5%;
-            background: 
-                linear-gradient(rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.98)),
-                repeating-linear-gradient(
-                    45deg,
-                    transparent,
-                    transparent 20px,
-                    rgba(59, 183, 120, 0.1) 20px,
-                    rgba(59, 183, 120, 0.1) 40px
-                );
+            background: #fff;
             color: #000;
-        }
-
-        .achievements .section-title {
-            color: var(--primary-green);
         }
 
         .achievements-container {
@@ -641,15 +604,7 @@
         /* Content Grid */
         .content-section {
             padding: 8rem 5%;
-            background: 
-                linear-gradient(rgba(19, 19, 26, 0.95), rgba(19, 19, 26, 0.95)),
-                repeating-linear-gradient(
-                    45deg,
-                    transparent,
-                    transparent 20px,
-                    rgba(59, 183, 120, 0.05) 20px,
-                    rgba(59, 183, 120, 0.05) 40px
-                );
+            background: var(--card-bg);
         }
 
         .content-grid {
@@ -693,16 +648,8 @@
 
         /* Footer */
         footer {
-            padding: 4rem 5%;
-            background: 
-                linear-gradient(rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.98)),
-                repeating-linear-gradient(
-                    45deg,
-                    transparent,
-                    transparent 20px,
-                    rgba(59, 183, 120, 0.1) 20px,
-                    rgba(59, 183, 120, 0.1) 40px
-                );
+            padding: 4rem 5% 2rem;
+            background: #fff;
             color: #000;
             border-top: 3px solid var(--primary-green);
         }
@@ -713,6 +660,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 3rem;
+            margin-bottom: 2rem;
         }
 
         .footer-section h4 {
@@ -722,6 +670,12 @@
             font-weight: 700;
             letter-spacing: 2px;
             text-transform: uppercase;
+        }
+
+        .footer-section p {
+            color: #333;
+            line-height: 1.8;
+            font-size: 1.1rem;
         }
 
         .footer-section a {
@@ -736,12 +690,6 @@
 
         .footer-section a:hover {
             color: var(--primary-green);
-        }
-
-        .footer-section p {
-            color: #333;
-            line-height: 1.8;
-            font-size: 1.1rem;
         }
 
         .social-links {
@@ -768,7 +716,6 @@
 
         .footer-bottom {
             text-align: center;
-            margin-top: 3rem;
             padding-top: 2rem;
             border-top: 2px solid var(--primary-green);
             color: var(--primary-green);
@@ -819,16 +766,7 @@
             }
 
             .news-carousel-container {
-                height: 380px;
-            }
-
-            .news-card {
-                min-height: 380px;
-                height: 380px;
-            }
-
-            .news-card-image {
-                height: 200px;
+                height: 760px;
             }
         }
     </style>
@@ -858,7 +796,6 @@
                 <span class="krypto-text">KRYPTO</span><br>
                 <span style="color: #fff;">IS BACK</span>
             </h1>
-            <p class="tagline">ELITE COMPETITIVE GAMING</p>
             <p class="slogan">Our Competitors Weakness</p>
             <div class="cta-buttons">
                 <a href="#" class="btn btn-primary">JOIN THE TEAM</a>
@@ -996,4 +933,17 @@
     <section class="achievements">
         <h2 class="section-title">Competitive Excellence</h2>
         <div class="achievements-container">
-            <div
+            <div class="achievement-card">
+                <div class="achievement-icon">🏆</div>
+                <h3>Tournament Dominance</h3>
+                <p>100% Grand Finals qualification rate across all major competitive events during our inaugural season</p>
+            </div>
+            <div class="achievement-card">
+                <div class="achievement-icon">⭐</div>
+                <h3>Player Development</h3>
+                <p>Comprehensive support system featuring dedicated coaching, advanced analytics, and performance optimization</p>
+            </div>
+            <div class="achievement-card">
+                <div class="achievement-icon">🎯</div>
+                <h3>Strategic Excellence</h3>
+                <p>Data-driven approach
