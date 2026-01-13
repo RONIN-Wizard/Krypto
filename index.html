@@ -250,7 +250,7 @@
         .news-carousel-section {
             position: relative;
             z-index: 2;
-            width: 400px;
+            width: 380px;
             flex-shrink: 0;
         }
 
@@ -264,12 +264,12 @@
 
         .news-carousel-header {
             background: #fff;
-            padding: 1.2rem;
+            padding: 1rem;
             border-bottom: 3px solid var(--primary-green);
         }
 
         .news-carousel-header h3 {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             font-weight: 700;
             color: #000;
             text-transform: uppercase;
@@ -278,7 +278,7 @@
         }
 
         .news-carousel-container {
-            height: 900px;
+            height: 420px;
             overflow: hidden;
             position: relative;
         }
@@ -286,26 +286,28 @@
         .news-carousel-track {
             display: flex;
             flex-direction: column;
-            transition: transform 0.5s ease;
+            transition: transform 0.6s ease-in-out;
         }
 
         .news-card {
-            min-height: 450px;
+            min-height: 420px;
+            height: 420px;
             background: #000;
             border-bottom: 2px solid var(--primary-green);
             display: flex;
             flex-direction: column;
+            flex-shrink: 0;
         }
 
         .news-card-image {
             width: 100%;
-            height: 250px;
+            height: 220px;
             object-fit: cover;
             border-bottom: 2px solid var(--primary-green);
         }
 
         .news-card-content {
-            padding: 1.5rem;
+            padding: 1.2rem;
             flex: 1;
             display: flex;
             flex-direction: column;
@@ -313,7 +315,7 @@
         }
 
         .news-card-title {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: 700;
             color: #fff;
             margin-bottom: 0.8rem;
@@ -321,7 +323,7 @@
         }
 
         .news-card-date {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--primary-green);
             font-weight: 600;
             text-transform: uppercase;
@@ -333,18 +335,19 @@
             background: var(--primary-green);
             color: #000;
             padding: 0.3rem 0.8rem;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: 700;
             text-transform: uppercase;
             margin-top: auto;
+            align-self: flex-start;
         }
 
         .carousel-controls {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 1rem;
-            padding: 1rem;
+            gap: 0.8rem;
+            padding: 0.8rem;
             background: #fff;
             border-top: 2px solid var(--primary-green);
         }
@@ -353,9 +356,9 @@
             background: var(--primary-green);
             color: #000;
             border: none;
-            width: 40px;
-            height: 40px;
-            font-size: 1.5rem;
+            width: 35px;
+            height: 35px;
+            font-size: 1.3rem;
             cursor: pointer;
             transition: all 0.3s;
             font-weight: 700;
@@ -397,7 +400,15 @@
         /* Stats Section */
         .stats {
             padding: 5rem 5%;
-            background: #fff;
+            background: 
+                linear-gradient(rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.98)),
+                repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 20px,
+                    rgba(59, 183, 120, 0.1) 20px,
+                    rgba(59, 183, 120, 0.1) 40px
+                );
             color: #000;
         }
 
@@ -442,6 +453,14 @@
             padding: 8rem 5%;
             max-width: 1200px;
             margin: 0 auto;
+            background: 
+                repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 20px,
+                    rgba(59, 183, 120, 0.05) 20px,
+                    rgba(59, 183, 120, 0.05) 40px
+                );
         }
 
         .section-title {
@@ -556,7 +575,15 @@
         /* Achievements Section */
         .achievements {
             padding: 8rem 5%;
-            background: #fff;
+            background: 
+                linear-gradient(rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.98)),
+                repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 20px,
+                    rgba(59, 183, 120, 0.1) 20px,
+                    rgba(59, 183, 120, 0.1) 40px
+                );
             color: #000;
         }
 
@@ -614,7 +641,15 @@
         /* Content Grid */
         .content-section {
             padding: 8rem 5%;
-            background: var(--card-bg);
+            background: 
+                linear-gradient(rgba(19, 19, 26, 0.95), rgba(19, 19, 26, 0.95)),
+                repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 20px,
+                    rgba(59, 183, 120, 0.05) 20px,
+                    rgba(59, 183, 120, 0.05) 40px
+                );
         }
 
         .content-grid {
@@ -659,7 +694,15 @@
         /* Footer */
         footer {
             padding: 4rem 5%;
-            background: #fff;
+            background: 
+                linear-gradient(rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.98)),
+                repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 20px,
+                    rgba(59, 183, 120, 0.1) 20px,
+                    rgba(59, 183, 120, 0.1) 40px
+                );
             color: #000;
             border-top: 3px solid var(--primary-green);
         }
@@ -776,11 +819,16 @@
             }
 
             .news-carousel-container {
-                height: 800px;
+                height: 380px;
             }
 
             .news-card {
-                min-height: 400px;
+                min-height: 380px;
+                height: 380px;
+            }
+
+            .news-card-image {
+                height: 200px;
             }
         }
     </style>
