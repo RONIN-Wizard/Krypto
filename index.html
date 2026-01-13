@@ -1,11 +1,775 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Krypto Preview</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Krypto Esports | Our Competitors Weakness</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-green: #3BB778;
+            --dark-bg: #0a0a0f;
+            --card-bg: #13131a;
+            --text-gray: #a0a0b0;
+        }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background: var(--dark-bg);
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(10, 10, 15, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(59, 183, 120, 0.1);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-img {
+            height: 50px;
+            width: auto;
+            filter: drop-shadow(0 0 15px rgba(59, 183, 120, 0.4));
+            transition: filter 0.3s;
+        }
+
+        .logo-img:hover {
+            filter: drop-shadow(0 0 25px rgba(59, 183, 120, 0.7));
+        }
+
+        nav ul {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--primary-green);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-green);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 0 5%;
+        }
+
+        .hero h1 {
+            font-size: 5.5rem;
+            font-weight: 700;
+            letter-spacing: 8px;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+            text-transform: uppercase;
+        }
+
+        .hero .krypto-text {
+            background: linear-gradient(45deg, var(--primary-green), #2a9e5f);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 30px rgba(59, 183, 120, 0.5));
+        }
+
+        .hero .tagline {
+            font-size: 1.6rem;
+            color: var(--text-gray);
+            margin-bottom: 1rem;
+            font-weight: 400;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .hero .slogan {
+            font-size: 2.2rem;
+            color: var(--primary-green);
+            font-weight: 700;
+            margin-bottom: 3rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1.2rem 3.5rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            letter-spacing: 2px;
+            font-family: 'Rajdhani', sans-serif;
+            text-transform: uppercase;
+        }
+
+        .btn-primary {
+            background: var(--primary-green);
+            color: #000;
+            box-shadow: 0 0 30px rgba(59, 183, 120, 0.5);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 40px rgba(59, 183, 120, 0.7);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #fff;
+            border: 2px solid var(--primary-green);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-green);
+            color: #000;
+            transform: translateY(-3px);
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 5rem 5%;
+            background: linear-gradient(180deg, var(--dark-bg) 0%, var(--card-bg) 100%);
+            position: relative;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 2.5rem 2rem;
+            border: 1px solid rgba(59, 183, 120, 0.2);
+            background: rgba(59, 183, 120, 0.05);
+            transition: all 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-green);
+            box-shadow: 0 10px 40px rgba(59, 183, 120, 0.3);
+        }
+
+        .stat-number {
+            font-size: 4.5rem;
+            font-weight: 700;
+            color: var(--primary-green);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.3rem;
+            color: var(--text-gray);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+        }
+
+        /* About Section */
+        .about {
+            padding: 8rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary-green);
+            text-transform: uppercase;
+            letter-spacing: 6px;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-green);
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .about-text p {
+            font-size: 1.2rem;
+            line-height: 1.9;
+            color: var(--text-gray);
+            margin-bottom: 1.2rem;
+            font-weight: 400;
+        }
+
+        .about-highlight {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-left: 4px solid var(--primary-green);
+            margin: 2rem 0;
+        }
+
+        .about-highlight h4 {
+            font-size: 1.5rem;
+            color: var(--primary-green);
+            margin-bottom: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .about-highlight ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .about-highlight li {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .about-highlight li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--primary-green);
+            font-weight: bold;
+        }
+
+        .features {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 1.8rem;
+            background: var(--card-bg);
+            border-left: 3px solid var(--primary-green);
+            transition: all 0.3s;
+        }
+
+        .feature:hover {
+            transform: translateX(10px);
+            background: rgba(59, 183, 120, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+        }
+
+        .feature-text h4 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .feature-text p {
+            font-size: 1rem;
+            color: var(--text-gray);
+        }
+
+        /* Content Grid */
+        .content-section {
+            padding: 8rem 5%;
+            background: var(--card-bg);
+        }
+
+        .content-grid {
+            max-width: 1400px;
+            margin: 3rem auto 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .content-card {
+            position: relative;
+            height: 400px;
+            background: var(--dark-bg);
+            overflow: hidden;
+            cursor: pointer;
+            border: 1px solid rgba(59, 183, 120, 0.1);
+            transition: all 0.3s;
+        }
+
+        .content-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-green);
+            box-shadow: 0 20px 60px rgba(59, 183, 120, 0.3);
+        }
+
+        .content-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.9) 100%);
+            z-index: 1;
+        }
+
+        .content-card-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem;
+            z-index: 2;
+        }
+
+        .content-card h3 {
+            font-size: 1.7rem;
+            margin-bottom: 0.8rem;
+            color: var(--primary-green);
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .content-card p {
+            color: var(--text-gray);
+            line-height: 1.7;
+            font-size: 1.1rem;
+        }
+
+        /* Footer */
+        footer {
+            padding: 4rem 5%;
+            background: #000;
+            border-top: 1px solid rgba(59, 183, 120, 0.2);
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-section h4 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-green);
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .footer-section a {
+            color: var(--text-gray);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.8rem;
+            transition: color 0.3s;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary-green);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            border: 1px solid var(--primary-green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            font-weight: 700;
+        }
+
+        .social-links a:hover {
+            background: var(--primary-green);
+            color: #000;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(59, 183, 120, 0.1);
+            color: var(--text-gray);
+            font-size: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero .slogan {
+                font-size: 1.3rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            .logo-img {
+                height: 40px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <h1>It works.</h1>
-  <p>This is a GitHub Pages preview.</p>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo-container">
+            <img src="Kryptonewgreentransparentwhite.png" alt="Krypto Esports" class="logo-img">
+        </div>
+        <ul>
+            <li><a href="#home">HOME</a></li>
+            <li><a href="#about">ABOUT</a></li>
+            <li><a href="#roster">ROSTER</a></li>
+            <li><a href="#content">CONTENT</a></li>
+            <li><a href="#contact">CONTACT</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <canvas id="canvas"></canvas>
+        <div class="hero-content">
+            <h1>
+                <span class="krypto-text">KRYPTO</span><br>
+                <span style="color: #fff;">IS BACK</span>
+            </h1>
+            <p class="tagline">THE FASTEST GROWING ORG</p>
+            <p class="slogan">Our Competitors Weakness</p>
+            <div class="cta-buttons">
+                <a href="#" class="btn btn-primary">JOIN THE TEAM</a>
+                <a href="#about" class="btn btn-secondary">LEARN MORE</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">6</div>
+                <div class="stat-label">Months Dominated</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Made Every Grands</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">#1</div>
+                <div class="stat-label">Non-Tier 1 Org</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">2024</div>
+                <div class="stat-label">Founded Jan 1st</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <h2 class="section-title">The Return</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <h3>Built Different From Day One</h3>
+                <p>Founded January 1st, 2024, Krypto took the Fortnite scene by storm. In just 6 months, we became the most sought-after non-tier 1 organization in the game. Players wanted to join us so badly, they'd take pay cuts or even join for free. That's not luck—that's culture.</p>
+                <p>We made every single grands. Every. Single. One. While other orgs struggled to stay relevant, we were setting the standard for content, player treatment, and competitive success.</p>
+                
+                <div class="about-highlight">
+                    <h4>Our Vision</h4>
+                    <ul>
+                        <li>Build the most player-centric organization in esports</li>
+                        <li>Maintain 100% qualification rate to major tournaments</li>
+                        <li>Set the gold standard for content creation and fan engagement</li>
+                        <li>Develop talent that goes on to compete at the highest level</li>
+                        <li>Create a sustainable ecosystem that benefits everyone</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">🏆</div>
+                    <div class="feature-text">
+                        <h4>Unmatched Track Record</h4>
+                        <p>Made every grands in our first 6 months—a feat unmatched by any non-tier 1 org.</p>
+                    </div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">⚡</div>
+                    <div class="feature-text">
+                        <h4>Player-First Always</h4>
+                        <p>Top talent joined for less than market value because they believed in our mission.</p>
+                    </div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🎬</div>
+                    <div class="feature-text">
+                        <h4>Industry-Leading Content</h4>
+                        <p>Consistent, high-quality content that kept fans engaged and sponsors happy.</p>
+                    </div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🚀</div>
+                    <div class="feature-text">
+                        <h4>Rapid Ascension</h4>
+                        <p>From zero to the most respected non-tier 1 org in record time.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Section -->
+    <section class="content-section" id="content">
+        <h2 class="section-title">What's Coming</h2>
+        <div class="content-grid">
+            <div class="content-card">
+                <div class="content-card-content">
+                    <h3>Championship Roster</h3>
+                    <p>We're assembling a roster that will remind everyone why Krypto dominated. Big announcements coming soon.</p>
+                </div>
+            </div>
+            <div class="content-card">
+                <div class="content-card-content">
+                    <h3>Premium Content</h3>
+                    <p>The content machine is firing back up. Get ready for player spotlights, behind-the-scenes, and tournament coverage.</p>
+                </div>
+            </div>
+            <div class="content-card">
+                <div class="content-card-content">
+                    <h3>Community Built Different</h3>
+                    <p>Fan events, giveaways, and exclusive access. We're building the strongest community in esports.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>KRYPTO ESPORTS</h4>
+                <p style="color: var(--text-gray); line-height: 1.8; font-size: 1.1rem;">
+                    Founded January 1st, 2024. Made every grands. The fastest growing org returns.
+                </p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#roster">Roster</a>
+                <a href="#content">Content</a>
+            </div>
+            <div class="footer-section">
+                <h4>Get In Touch</h4>
+                <a href="mailto:contact@kryptoesports.gg">contact@kryptoesports.gg</a>
+                <a href="#">Apply as Player</a>
+                <a href="#">Partnership Inquiries</a>
+            </div>
+            <div class="footer-section">
+                <h4>Follow Us</h4>
+                <div class="social-links">
+                    <a href="#">X</a>
+                    <a href="#">IG</a>
+                    <a href="#">YT</a>
+                    <a href="#">TW</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Krypto Esports. All rights reserved. | Our Competitors Weakness</p>
+        </div>
+    </footer>
+
+    <script>
+        // Particle animation for hero section
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const particles = [];
+        const particleCount = 100;
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 1;
+                this.speedX = Math.random() * 1 - 0.5;
+                this.speedY = Math.random() * 1 - 0.5;
+                this.opacity = Math.random() * 0.5 + 0.2;
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+
+                if (this.x > canvas.width) this.x = 0;
+                if (this.x < 0) this.x = canvas.width;
+                if (this.y > canvas.height) this.y = 0;
+                if (this.y < 0) this.y = canvas.height;
+            }
+
+            draw() {
+                ctx.fillStyle = `rgba(59, 183, 120, ${this.opacity})`;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function init() {
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Draw connections
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < 150) {
+                        ctx.strokeStyle = `rgba(59, 183, 120, ${0.1 * (1 - distance / 150)})`;
+                        ctx.lineWidth = 1;
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+
+            particles.forEach(particle => {
+                particle.update();
+                particle.draw();
+            });
+
+            requestAnimationFrame(animate);
+        }
+
+        init();
+        animate();
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
