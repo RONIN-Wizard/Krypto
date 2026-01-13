@@ -19,6 +19,24 @@
             --text-gray: #a0a0b0;
         }
 
+        /* Custom Green Scrollbar */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #000;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-green);
+            border-radius: 6px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #2a9e5f;
+        }
+
         body {
             font-family: 'Rajdhani', sans-serif;
             background: var(--dark-bg);
@@ -127,12 +145,14 @@
 
         /* Hero Section */
         .hero {
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: space-between;
             position: relative;
             overflow: hidden;
+            padding: 0 5%;
+            gap: 4rem;
         }
 
         #canvas {
@@ -148,8 +168,8 @@
             position: relative;
             z-index: 2;
             text-align: center;
-            padding: 0 5%;
-            max-width: 60%;
+            flex: 1;
+            max-width: 700px;
         }
 
         .hero h1 {
@@ -232,104 +252,158 @@
         }
 
         /* News Carousel */
-        .news-carousel {
-            position: absolute;
-            right: 5%;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 320px;
-            height: 600px;
-            z-index: 3;
+        .news-carousel-section {
+            position: relative;
+            z-index: 2;
+            width: 400px;
+            flex-shrink: 0;
+        }
+
+        .news-carousel-wrapper {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid var(--primary-green);
+            border-radius: 4px;
             overflow: hidden;
-            border: 2px solid rgba(59, 183, 120, 0.3);
-            background: rgba(19, 19, 26, 0.9);
-            backdrop-filter: blur(10px);
             box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
         }
 
         .news-carousel-header {
-            padding: 1.5rem;
-            border-bottom: 2px solid var(--primary-green);
-            background: rgba(10, 10, 15, 0.95);
+            background: #fff;
+            padding: 1.2rem;
+            border-bottom: 3px solid var(--primary-green);
         }
 
         .news-carousel-header h3 {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 700;
-            color: var(--primary-green);
+            color: #000;
             text-transform: uppercase;
             letter-spacing: 2px;
             text-align: center;
         }
 
-        .news-track {
+        .news-carousel-container {
+            height: 450px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .news-carousel-track {
             display: flex;
             flex-direction: column;
-            animation: scrollNews 20s linear infinite;
+            transition: transform 0.5s ease;
         }
 
-        @keyframes scrollNews {
-            0% {
-                transform: translateY(0);
-            }
-            100% {
-                transform: translateY(-50%);
-            }
+        .news-card {
+            min-height: 450px;
+            background: #000;
+            border-bottom: 2px solid var(--primary-green);
+            display: flex;
+            flex-direction: column;
         }
 
-        .news-carousel:hover .news-track {
-            animation-play-state: paused;
+        .news-card-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-bottom: 2px solid var(--primary-green);
         }
 
-        .news-item {
+        .news-card-content {
             padding: 1.5rem;
-            border-bottom: 1px solid rgba(59, 183, 120, 0.2);
-            transition: all 0.3s;
-            cursor: pointer;
-            min-height: 140px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background: #000;
         }
 
-        .news-item:hover {
-            background: rgba(59, 183, 120, 0.1);
-            transform: translateX(-5px);
-        }
-
-        .news-date {
-            font-size: 0.9rem;
-            color: var(--primary-green);
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .news-title {
-            font-size: 1.2rem;
+        .news-card-title {
+            font-size: 1.3rem;
             font-weight: 700;
             color: #fff;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
             line-height: 1.3;
         }
 
-        .news-description {
-            font-size: 0.95rem;
-            color: var(--text-gray);
-            line-height: 1.5;
+        .news-card-date {
+            font-size: 0.9rem;
+            color: var(--primary-green);
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .news-card-category {
+            display: inline-block;
+            background: var(--primary-green);
+            color: #000;
+            padding: 0.3rem 0.8rem;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-top: auto;
+        }
+
+        .carousel-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: #fff;
+            border-top: 2px solid var(--primary-green);
+        }
+
+        .carousel-arrow {
+            background: var(--primary-green);
+            color: #000;
+            border: none;
+            width: 40px;
+            height: 40px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-arrow:hover {
+            background: #2a9e5f;
+            transform: scale(1.1);
+        }
+
+        .carousel-arrow:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .carousel-dots {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .carousel-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #ccc;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .carousel-dot.active {
+            background: var(--primary-green);
+            transform: scale(1.3);
         }
 
         /* Stats Section */
         .stats {
             padding: 5rem 5%;
-            background: 
-                linear-gradient(180deg, rgba(10, 10, 15, 0.95) 0%, rgba(19, 19, 26, 0.95) 100%),
-                repeating-linear-gradient(
-                    45deg,
-                    transparent,
-                    transparent 10px,
-                    rgba(59, 183, 120, 0.02) 10px,
-                    rgba(59, 183, 120, 0.02) 20px
-                );
-            position: relative;
+            background: #fff;
+            color: #000;
         }
 
         .stats-grid {
@@ -343,15 +417,14 @@
         .stat-card {
             text-align: center;
             padding: 2.5rem 2rem;
-            border: 1px solid rgba(59, 183, 120, 0.2);
-            background: rgba(59, 183, 120, 0.05);
+            border: 3px solid var(--primary-green);
+            background: #fff;
             transition: all 0.3s;
         }
 
         .stat-card:hover {
             transform: translateY(-10px);
-            border-color: var(--primary-green);
-            box-shadow: 0 10px 40px rgba(59, 183, 120, 0.3);
+            box-shadow: 0 10px 40px rgba(59, 183, 120, 0.5);
         }
 
         .stat-number {
@@ -363,7 +436,7 @@
 
         .stat-label {
             font-size: 1.3rem;
-            color: var(--text-gray);
+            color: #000;
             text-transform: uppercase;
             letter-spacing: 2px;
             font-weight: 600;
@@ -381,7 +454,7 @@
             font-weight: 700;
             text-align: center;
             margin-bottom: 3rem;
-            color: var(--primary-green);
+            color: #fff;
             text-transform: uppercase;
             letter-spacing: 6px;
         }
@@ -396,7 +469,7 @@
         .about-text h3 {
             font-size: 2.5rem;
             margin-bottom: 1.5rem;
-            color: var(--primary-green);
+            color: #fff;
             font-weight: 700;
             letter-spacing: 2px;
         }
@@ -410,7 +483,8 @@
         }
 
         .about-highlight {
-            background: var(--card-bg);
+            background: #fff;
+            color: #000;
             padding: 2rem;
             border-left: 4px solid var(--primary-green);
             margin: 2rem 0;
@@ -432,7 +506,7 @@
 
         .about-highlight li {
             font-size: 1.1rem;
-            color: var(--text-gray);
+            color: #000;
             margin-bottom: 0.8rem;
             padding-left: 1.5rem;
             position: relative;
@@ -456,14 +530,15 @@
             align-items: center;
             gap: 1.5rem;
             padding: 1.8rem;
-            background: var(--card-bg);
+            background: #fff;
+            color: #000;
             border-left: 3px solid var(--primary-green);
             transition: all 0.3s;
         }
 
         .feature:hover {
             transform: translateX(10px);
-            background: rgba(59, 183, 120, 0.1);
+            box-shadow: 0 5px 20px rgba(59, 183, 120, 0.3);
         }
 
         .feature-icon {
@@ -475,25 +550,23 @@
             margin-bottom: 0.5rem;
             font-weight: 700;
             letter-spacing: 1px;
+            color: #000;
         }
 
         .feature-text p {
             font-size: 1rem;
-            color: var(--text-gray);
+            color: #333;
         }
 
         /* Achievements Section */
         .achievements {
             padding: 8rem 5%;
-            background: 
-                linear-gradient(rgba(10, 10, 15, 0.95), rgba(10, 10, 15, 0.95)),
-                repeating-linear-gradient(
-                    0deg,
-                    transparent,
-                    transparent 50px,
-                    rgba(59, 183, 120, 0.05) 50px,
-                    rgba(59, 183, 120, 0.05) 51px
-                );
+            background: #fff;
+            color: #000;
+        }
+
+        .achievements .section-title {
+            color: #000;
         }
 
         .achievements-container {
@@ -505,17 +578,16 @@
         }
 
         .achievement-card {
-            background: var(--card-bg);
+            background: #fff;
             padding: 3rem 2rem;
-            border: 2px solid rgba(59, 183, 120, 0.2);
+            border: 3px solid var(--primary-green);
             text-align: center;
             transition: all 0.3s;
         }
 
         .achievement-card:hover {
             transform: translateY(-10px);
-            border-color: var(--primary-green);
-            box-shadow: 0 15px 50px rgba(59, 183, 120, 0.3);
+            box-shadow: 0 15px 50px rgba(59, 183, 120, 0.5);
         }
 
         .achievement-icon {
@@ -539,7 +611,7 @@
         }
 
         .achievement-card p {
-            color: var(--text-gray);
+            color: #333;
             line-height: 1.8;
             font-size: 1.1rem;
         }
@@ -561,33 +633,16 @@
 
         .content-card {
             position: relative;
-            background: var(--dark-bg);
+            background: #000;
             overflow: hidden;
-            border: 2px solid var(--primary-green);
+            border: 3px solid var(--primary-green);
             transition: all 0.3s;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        }
-
-        .content-card::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(45deg, var(--primary-green), transparent, var(--primary-green));
-            z-index: -1;
-            opacity: 0;
-            transition: opacity 0.3s;
         }
 
         .content-card:hover {
             transform: translateY(-15px);
             box-shadow: 0 25px 70px rgba(59, 183, 120, 0.5);
-        }
-
-        .content-card:hover::before {
-            opacity: 0.3;
         }
 
         .video-wrapper {
@@ -606,32 +661,12 @@
             border: none;
         }
 
-        .content-card-content {
-            padding: 2rem;
-            background: var(--dark-bg);
-            flex-grow: 1;
-            display: none;
-        }
-
-        .content-card h3 {
-            font-size: 1.7rem;
-            margin-bottom: 0.8rem;
-            color: var(--primary-green);
-            font-weight: 700;
-            letter-spacing: 1px;
-        }
-
-        .content-card p {
-            color: var(--text-gray);
-            line-height: 1.7;
-            font-size: 1.1rem;
-        }
-
         /* Footer */
         footer {
             padding: 4rem 5%;
-            background: #000;
-            border-top: 1px solid rgba(59, 183, 120, 0.2);
+            background: #fff;
+            color: #000;
+            border-top: 3px solid var(--primary-green);
         }
 
         .footer-content {
@@ -652,7 +687,7 @@
         }
 
         .footer-section a {
-            color: var(--text-gray);
+            color: #333;
             text-decoration: none;
             display: block;
             margin-bottom: 0.8rem;
@@ -665,6 +700,12 @@
             color: var(--primary-green);
         }
 
+        .footer-section p {
+            color: #333;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
         .social-links {
             display: flex;
             gap: 1rem;
@@ -673,35 +714,43 @@
         .social-links a {
             width: 45px;
             height: 45px;
-            border: 1px solid var(--primary-green);
+            border: 2px solid var(--primary-green);
             display: flex;
             align-items: center;
             justify-content: center;
             transition: all 0.3s;
             font-weight: 700;
+            background: #fff;
         }
 
         .social-links a:hover {
             background: var(--primary-green);
-            color: #000;
+            color: #fff;
         }
 
         .footer-bottom {
             text-align: center;
             margin-top: 3rem;
             padding-top: 2rem;
-            border-top: 1px solid rgba(59, 183, 120, 0.1);
-            color: var(--text-gray);
+            border-top: 2px solid var(--primary-green);
+            color: #000;
             font-size: 1rem;
+            font-weight: 600;
         }
 
         @media (max-width: 1200px) {
-            .news-carousel {
-                display: none;
+            .hero {
+                flex-direction: column;
+                padding-top: 120px;
             }
-            
+
+            .news-carousel-section {
+                width: 100%;
+                max-width: 500px;
+            }
+
             .hero-content {
-                max-width: 90%;
+                max-width: 100%;
             }
         }
 
@@ -729,6 +778,14 @@
             .content-grid {
                 grid-template-columns: 1fr;
                 padding: 0;
+            }
+
+            .news-carousel-container {
+                height: 400px;
+            }
+
+            .news-card {
+                min-height: 400px;
             }
         }
     </style>
@@ -767,12 +824,52 @@
         </div>
 
         <!-- News Carousel -->
-        <div class="news-carousel">
-            <div class="news-carousel-header">
-                <h3>LATEST NEWS</h3>
-            </div>
-            <div class="news-track" id="newsTrack">
-                <!-- News items will be duplicated by JavaScript -->
+        <div class="news-carousel-section">
+            <div class="news-carousel-wrapper">
+                <div class="news-carousel-header">
+                    <h3>LATEST NEWS</h3>
+                </div>
+                <div class="news-carousel-container">
+                    <div class="news-carousel-track" id="newsTrack">
+                        <div class="news-card">
+                            <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=400&h=250&fit=crop" alt="News 1" class="news-card-image">
+                            <div class="news-card-content">
+                                <div class="news-card-date">5 JAN 26</div>
+                                <div class="news-card-title">Krypto Returns: The Comeback Story</div>
+                                <div class="news-card-category">INTERVIEWS</div>
+                            </div>
+                        </div>
+                        <div class="news-card">
+                            <img src="https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=400&h=250&fit=crop" alt="News 2" class="news-card-image">
+                            <div class="news-card-content">
+                                <div class="news-card-date">21 DEC 25</div>
+                                <div class="news-card-title">The Basics of Combat in Fortnite with Acorn</div>
+                                <div class="news-card-category">GUIDES</div>
+                            </div>
+                        </div>
+                        <div class="news-card">
+                            <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=400&h=250&fit=crop" alt="News 3" class="news-card-image">
+                            <div class="news-card-content">
+                                <div class="news-card-date">15 DEC 25</div>
+                                <div class="news-card-title">Tournament Victory: Krypto Dominates Finals</div>
+                                <div class="news-card-category">RESULTS</div>
+                            </div>
+                        </div>
+                        <div class="news-card">
+                            <img src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?w=400&h=250&fit=crop" alt="News 4" class="news-card-image">
+                            <div class="news-card-content">
+                                <div class="news-card-date">10 DEC 25</div>
+                                <div class="news-card-title">New Roster Announcement Coming Soon</div>
+                                <div class="news-card-category">ANNOUNCEMENTS</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-controls">
+                    <button class="carousel-arrow" id="prevBtn">▲</button>
+                    <div class="carousel-dots" id="carouselDots"></div>
+                    <button class="carousel-arrow" id="nextBtn">▼</button>
+                </div>
             </div>
         </div>
     </section>
@@ -856,71 +953,4 @@
     <section class="achievements">
         <h2 class="section-title">Competitive Excellence</h2>
         <div class="achievements-container">
-            <div class="achievement-card">
-                <div class="achievement-icon">🏆</div>
-                <h3>Tournament Dominance</h3>
-                <p>100% Grand Finals qualification rate across all major competitive events during our inaugural season</p>
-            </div>
-            <div class="achievement-card">
-                <div class="achievement-icon">⭐</div>
-                <h3>Player Development</h3>
-                <p>Comprehensive support system featuring dedicated coaching, advanced analytics, and performance optimization</p>
-            </div>
-            <div class="achievement-card">
-                <div class="achievement-icon">🎯</div>
-                <h3>Strategic Excellence</h3>
-                <p>Data-driven approach to roster management and competitive strategy setting industry benchmarks</p>
-            </div>
-            <div class="achievement-card">
-                <div class="achievement-icon">🤝</div>
-                <h3>Community Leadership</h3>
-                <p>Building lasting connections through authentic fan engagement and grassroots esports development</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Content Section -->
-    <section class="content-section" id="content">
-        <h2 class="section-title" style="font-size: 4rem; margin-bottom: 3rem;">RECENT CONTENT</h2>
-        <div class="content-grid">
-            <div class="content-card video-card">
-                <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/26E_AsO5tww" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-            </div>
-            <div class="content-card video-card">
-                <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/fHZE4DJohaA" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer id="contact">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h4>KRYPTO ESPORTS</h4>
-                <p style="color: var(--text-gray); line-height: 1.8; font-size: 1.1rem;">
-                    Founded January 1st, 2024. Premier competitive gaming organization dedicated to excellence in esports.
-                </p>
-            </div>
-            <div class="footer-section">
-                <h4>Quick Links</h4>
-                <a href="#home">Home</a>
-                <a href="#about">About</a>
-                <a href="#roster">Roster</a>
-                <a href="#content">Content</a>
-            </div>
-            <div class="footer-section">
-                <h4>Get In Touch</h4>
-                <a href="mailto:contact@kryptoesports.gg">contact@kryptoesports.gg</a>
-                <a href="#">Player Applications</a>
-                <a href="#">Partnership Opportunities</a>
-            </div>
-            <div class="footer-section">
-                <h4>Follow Us</h4>
-                <div class="social-links">
-                    <a href="#">X</a>
-                    <a href="#">IG</a>
-                    <a href="#">YT</a>
+            <div
