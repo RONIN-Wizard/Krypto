@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Krypto Esports | Our Competitors Weakness</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -19,7 +20,7 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Rajdhani', sans-serif;
             background: var(--dark-bg);
             color: #fff;
             overflow-x: hidden;
@@ -37,21 +38,23 @@
             z-index: 1000;
             background: rgba(10, 10, 15, 0.8);
             backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(0, 255, 65, 0.1);
+            border-bottom: 1px solid rgba(59, 183, 120, 0.1);
         }
 
-        .logo {
-            font-size: 2rem;
-            font-weight: 900;
-            letter-spacing: 3px;
-            color: var(--primary-green);
-            text-shadow: 0 0 20px rgba(0, 255, 65, 0.5);
-            animation: glitch 3s infinite;
+        .logo-container {
+            display: flex;
+            align-items: center;
         }
 
-        @keyframes glitch {
-            0%, 90%, 100% { text-shadow: 0 0 20px rgba(59, 183, 120, 0.5); }
-            95% { text-shadow: 3px 0 0 #ff00ff, -3px 0 0 #00ffff; }
+        .logo-img {
+            height: 50px;
+            width: auto;
+            filter: drop-shadow(0 0 15px rgba(59, 183, 120, 0.4));
+            transition: filter 0.3s;
+        }
+
+        .logo-img:hover {
+            filter: drop-shadow(0 0 25px rgba(59, 183, 120, 0.7));
         }
 
         nav ul {
@@ -64,6 +67,8 @@
             color: #fff;
             text-decoration: none;
             font-weight: 600;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
             transition: color 0.3s;
             position: relative;
         }
@@ -114,36 +119,38 @@
         }
 
         .hero h1 {
-            font-size: 5rem;
-            font-weight: 900;
-            letter-spacing: 5px;
+            font-size: 5.5rem;
+            font-weight: 700;
+            letter-spacing: 8px;
             margin-bottom: 1rem;
             line-height: 1.1;
+            text-transform: uppercase;
         }
 
         .hero .krypto-text {
-            background: linear-gradient(45deg, var(--primary-green), #00aa2e);
+            background: linear-gradient(45deg, var(--primary-green), #2a9e5f);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 0 30px rgba(0, 255, 65, 0.5));
+            filter: drop-shadow(0 0 30px rgba(59, 183, 120, 0.5));
         }
 
         .hero .tagline {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             color: var(--text-gray);
             margin-bottom: 1rem;
-            font-weight: 300;
-            letter-spacing: 2px;
+            font-weight: 400;
+            letter-spacing: 3px;
+            text-transform: uppercase;
         }
 
         .hero .slogan {
-            font-size: 2rem;
+            font-size: 2.2rem;
             color: var(--primary-green);
             font-weight: 700;
             margin-bottom: 3rem;
             text-transform: uppercase;
-            letter-spacing: 3px;
+            letter-spacing: 4px;
         }
 
         .cta-buttons {
@@ -154,26 +161,28 @@
         }
 
         .btn {
-            padding: 1rem 3rem;
-            font-size: 1.1rem;
+            padding: 1.2rem 3.5rem;
+            font-size: 1.2rem;
             font-weight: 700;
             border: none;
             cursor: pointer;
             transition: all 0.3s;
             text-decoration: none;
             display: inline-block;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
+            font-family: 'Rajdhani', sans-serif;
+            text-transform: uppercase;
         }
 
         .btn-primary {
             background: var(--primary-green);
             color: #000;
-            box-shadow: 0 0 30px rgba(0, 255, 65, 0.5);
+            box-shadow: 0 0 30px rgba(59, 183, 120, 0.5);
         }
 
         .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 40px rgba(0, 255, 65, 0.7);
+            box-shadow: 0 10px 40px rgba(59, 183, 120, 0.7);
         }
 
         .btn-secondary {
@@ -205,30 +214,31 @@
 
         .stat-card {
             text-align: center;
-            padding: 2rem;
-            border: 1px solid rgba(0, 255, 65, 0.2);
-            background: rgba(0, 255, 65, 0.05);
+            padding: 2.5rem 2rem;
+            border: 1px solid rgba(59, 183, 120, 0.2);
+            background: rgba(59, 183, 120, 0.05);
             transition: all 0.3s;
         }
 
         .stat-card:hover {
             transform: translateY(-10px);
             border-color: var(--primary-green);
-            box-shadow: 0 10px 40px rgba(0, 255, 65, 0.3);
+            box-shadow: 0 10px 40px rgba(59, 183, 120, 0.3);
         }
 
         .stat-number {
-            font-size: 4rem;
-            font-weight: 900;
+            font-size: 4.5rem;
+            font-weight: 700;
             color: var(--primary-green);
             margin-bottom: 0.5rem;
         }
 
         .stat-label {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             color: var(--text-gray);
             text-transform: uppercase;
             letter-spacing: 2px;
+            font-weight: 600;
         }
 
         /* About Section */
@@ -239,13 +249,13 @@
         }
 
         .section-title {
-            font-size: 3rem;
-            font-weight: 900;
+            font-size: 3.5rem;
+            font-weight: 700;
             text-align: center;
             margin-bottom: 3rem;
             color: var(--primary-green);
             text-transform: uppercase;
-            letter-spacing: 4px;
+            letter-spacing: 6px;
         }
 
         .about-content {
@@ -256,16 +266,56 @@
         }
 
         .about-text h3 {
-            font-size: 2rem;
+            font-size: 2.5rem;
             margin-bottom: 1.5rem;
             color: var(--primary-green);
+            font-weight: 700;
+            letter-spacing: 2px;
         }
 
         .about-text p {
-            font-size: 1.1rem;
-            line-height: 1.8;
+            font-size: 1.2rem;
+            line-height: 1.9;
             color: var(--text-gray);
+            margin-bottom: 1.2rem;
+            font-weight: 400;
+        }
+
+        .about-highlight {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-left: 4px solid var(--primary-green);
+            margin: 2rem 0;
+        }
+
+        .about-highlight h4 {
+            font-size: 1.5rem;
+            color: var(--primary-green);
             margin-bottom: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .about-highlight ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .about-highlight li {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .about-highlight li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--primary-green);
+            font-weight: bold;
         }
 
         .features {
@@ -276,8 +326,8 @@
         .feature {
             display: flex;
             align-items: center;
-            gap: 1rem;
-            padding: 1.5rem;
+            gap: 1.5rem;
+            padding: 1.8rem;
             background: var(--card-bg);
             border-left: 3px solid var(--primary-green);
             transition: all 0.3s;
@@ -285,20 +335,22 @@
 
         .feature:hover {
             transform: translateX(10px);
-            background: rgba(0, 255, 65, 0.1);
+            background: rgba(59, 183, 120, 0.1);
         }
 
         .feature-icon {
-            font-size: 2rem;
+            font-size: 2.5rem;
         }
 
         .feature-text h4 {
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             margin-bottom: 0.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
         }
 
         .feature-text p {
-            font-size: 0.9rem;
+            font-size: 1rem;
             color: var(--text-gray);
         }
 
@@ -322,14 +374,14 @@
             background: var(--dark-bg);
             overflow: hidden;
             cursor: pointer;
-            border: 1px solid rgba(0, 255, 65, 0.1);
+            border: 1px solid rgba(59, 183, 120, 0.1);
             transition: all 0.3s;
         }
 
         .content-card:hover {
             transform: translateY(-10px);
             border-color: var(--primary-green);
-            box-shadow: 0 20px 60px rgba(0, 255, 65, 0.3);
+            box-shadow: 0 20px 60px rgba(59, 183, 120, 0.3);
         }
 
         .content-card::before {
@@ -353,21 +405,24 @@
         }
 
         .content-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
+            font-size: 1.7rem;
+            margin-bottom: 0.8rem;
             color: var(--primary-green);
+            font-weight: 700;
+            letter-spacing: 1px;
         }
 
         .content-card p {
             color: var(--text-gray);
-            line-height: 1.6;
+            line-height: 1.7;
+            font-size: 1.1rem;
         }
 
         /* Footer */
         footer {
             padding: 4rem 5%;
             background: #000;
-            border-top: 1px solid rgba(0, 255, 65, 0.2);
+            border-top: 1px solid rgba(59, 183, 120, 0.2);
         }
 
         .footer-content {
@@ -379,9 +434,12 @@
         }
 
         .footer-section h4 {
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             margin-bottom: 1.5rem;
             color: var(--primary-green);
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
         .footer-section a {
@@ -390,6 +448,8 @@
             display: block;
             margin-bottom: 0.8rem;
             transition: color 0.3s;
+            font-size: 1.1rem;
+            font-weight: 500;
         }
 
         .footer-section a:hover {
@@ -402,13 +462,14 @@
         }
 
         .social-links a {
-            width: 40px;
-            height: 40px;
+            width: 45px;
+            height: 45px;
             border: 1px solid var(--primary-green);
             display: flex;
             align-items: center;
             justify-content: center;
             transition: all 0.3s;
+            font-weight: 700;
         }
 
         .social-links a:hover {
@@ -420,8 +481,9 @@
             text-align: center;
             margin-top: 3rem;
             padding-top: 2rem;
-            border-top: 1px solid rgba(0, 255, 65, 0.1);
+            border-top: 1px solid rgba(59, 183, 120, 0.1);
             color: var(--text-gray);
+            font-size: 1rem;
         }
 
         @media (max-width: 768px) {
@@ -430,7 +492,7 @@
             }
 
             .hero .slogan {
-                font-size: 1.2rem;
+                font-size: 1.3rem;
             }
 
             .about-content {
@@ -440,13 +502,19 @@
             nav ul {
                 display: none;
             }
+
+            .logo-img {
+                height: 40px;
+            }
         }
     </style>
 </head>
 <body>
     <!-- Navigation -->
     <nav>
-        <div class="logo">KRYPTO</div>
+        <div class="logo-container">
+            <img src="Kryptonewgreentransparentwhite.png" alt="Krypto Esports" class="logo-img">
+        </div>
         <ul>
             <li><a href="#home">HOME</a></li>
             <li><a href="#about">ABOUT</a></li>
@@ -478,59 +546,70 @@
         <div class="stats-grid">
             <div class="stat-card">
                 <div class="stat-number">6</div>
-                <div class="stat-label">Months of Dominance</div>
+                <div class="stat-label">Months Dominated</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Made Every Grands</div>
             </div>
             <div class="stat-card">
                 <div class="stat-number">#1</div>
                 <div class="stat-label">Non-Tier 1 Org</div>
             </div>
             <div class="stat-card">
-                <div class="stat-number">100%</div>
-                <div class="stat-label">Player First</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">∞</div>
-                <div class="stat-label">Potential</div>
+                <div class="stat-number">2024</div>
+                <div class="stat-label">Founded Jan 1st</div>
             </div>
         </div>
     </section>
 
     <!-- About Section -->
     <section class="about" id="about">
-        <h2 class="section-title">The Legacy Returns</h2>
+        <h2 class="section-title">The Return</h2>
         <div class="about-content">
             <div class="about-text">
-                <h3>Built Different</h3>
-                <p>Krypto dominated the Fortnite scene for 6 months straight. We weren't just another org—we were THE destination. Players took pay cuts just to wear our colors. Our content set the standard.</p>
-                <p>Now we're back, stronger and smarter. Same energy, same culture, but with the experience and resources to go even harder.</p>
+                <h3>Built Different From Day One</h3>
+                <p>Founded January 1st, 2024, Krypto took the Fortnite scene by storm. In just 6 months, we became the most sought-after non-tier 1 organization in the game. Players wanted to join us so badly, they'd take pay cuts or even join for free. That's not luck—that's culture.</p>
+                <p>We made every single grands. Every. Single. One. While other orgs struggled to stay relevant, we were setting the standard for content, player treatment, and competitive success.</p>
+                
+                <div class="about-highlight">
+                    <h4>Our Vision</h4>
+                    <ul>
+                        <li>Build the most player-centric organization in esports</li>
+                        <li>Maintain 100% qualification rate to major tournaments</li>
+                        <li>Set the gold standard for content creation and fan engagement</li>
+                        <li>Develop talent that goes on to compete at the highest level</li>
+                        <li>Create a sustainable ecosystem that benefits everyone</li>
+                    </ul>
+                </div>
             </div>
             <div class="features">
                 <div class="feature">
+                    <div class="feature-icon">🏆</div>
+                    <div class="feature-text">
+                        <h4>Unmatched Track Record</h4>
+                        <p>Made every grands in our first 6 months—a feat unmatched by any non-tier 1 org.</p>
+                    </div>
+                </div>
+                <div class="feature">
                     <div class="feature-icon">⚡</div>
                     <div class="feature-text">
-                        <h4>Player-First Culture</h4>
-                        <p>We built our reputation on treating players right. That's not changing.</p>
+                        <h4>Player-First Always</h4>
+                        <p>Top talent joined for less than market value because they believed in our mission.</p>
                     </div>
                 </div>
                 <div class="feature">
                     <div class="feature-icon">🎬</div>
                     <div class="feature-text">
-                        <h4>Top-Tier Content</h4>
-                        <p>Consistent, high-quality content that keeps fans engaged.</p>
-                    </div>
-                </div>
-                <div class="feature">
-                    <div class="feature-icon">🏆</div>
-                    <div class="feature-text">
-                        <h4>Winning Mentality</h4>
-                        <p>We attract competitors who want to be the best.</p>
+                        <h4>Industry-Leading Content</h4>
+                        <p>Consistent, high-quality content that kept fans engaged and sponsors happy.</p>
                     </div>
                 </div>
                 <div class="feature">
                     <div class="feature-icon">🚀</div>
                     <div class="feature-text">
-                        <h4>Rapid Growth</h4>
-                        <p>From zero to hero in record time. We know how to scale.</p>
+                        <h4>Rapid Ascension</h4>
+                        <p>From zero to the most respected non-tier 1 org in record time.</p>
                     </div>
                 </div>
             </div>
@@ -539,24 +618,24 @@
 
     <!-- Content Section -->
     <section class="content-section" id="content">
-        <h2 class="section-title">Latest Updates</h2>
+        <h2 class="section-title">What's Coming</h2>
         <div class="content-grid">
             <div class="content-card">
                 <div class="content-card-content">
-                    <h3>Roster Announcements</h3>
-                    <p>Stay tuned as we reveal our championship-caliber roster. Big names incoming.</p>
+                    <h3>Championship Roster</h3>
+                    <p>We're assembling a roster that will remind everyone why Krypto dominated. Big announcements coming soon.</p>
                 </div>
             </div>
             <div class="content-card">
                 <div class="content-card-content">
-                    <h3>Behind The Scenes</h3>
-                    <p>Exclusive content showing what goes into building an elite esports organization.</p>
+                    <h3>Premium Content</h3>
+                    <p>The content machine is firing back up. Get ready for player spotlights, behind-the-scenes, and tournament coverage.</p>
                 </div>
             </div>
             <div class="content-card">
                 <div class="content-card-content">
-                    <h3>Community Events</h3>
-                    <p>Connecting with fans and building the strongest community in esports.</p>
+                    <h3>Community Built Different</h3>
+                    <p>Fan events, giveaways, and exclusive access. We're building the strongest community in esports.</p>
                 </div>
             </div>
         </div>
@@ -567,8 +646,8 @@
         <div class="footer-content">
             <div class="footer-section">
                 <h4>KRYPTO ESPORTS</h4>
-                <p style="color: var(--text-gray); line-height: 1.6;">
-                    The fastest growing esports organization. Built by players, for players.
+                <p style="color: var(--text-gray); line-height: 1.8; font-size: 1.1rem;">
+                    Founded January 1st, 2024. Made every grands. The fastest growing org returns.
                 </p>
             </div>
             <div class="footer-section">
@@ -579,7 +658,7 @@
                 <a href="#content">Content</a>
             </div>
             <div class="footer-section">
-                <h4>Contact</h4>
+                <h4>Get In Touch</h4>
                 <a href="mailto:contact@kryptoesports.gg">contact@kryptoesports.gg</a>
                 <a href="#">Apply as Player</a>
                 <a href="#">Partnership Inquiries</a>
