@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Krypto Customs | Competitive Custom Matches</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-green: #3BB778;
+            --dark-bg: #0a0a0f;
+            --card-bg: #13131a;
+            --text-gray: #a0a0b0;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #000;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-green);
+            border-radius: 6px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #2a9e5f;
+        }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background: var(--dark-bg);
+            color: #fff;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(ellipse at top, rgba(59, 183, 120, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at bottom, rgba(59, 183, 120, 0.1) 0%, transparent 50%),
+                linear-gradient(rgba(10, 10, 15, 0.95), rgba(10, 10, 15, 0.95)),
+                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(59, 183, 120, 0.03) 2px, rgba(59, 183, 120, 0.03) 4px),
+                repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(59, 183, 120, 0.03) 2px, rgba(59, 183, 120, 0.03) 4px);
+            pointer-events: none;
+            z-index: 0;
+            animation: atmosphericPulse 8s ease-in-out infinite;
+        }
+
+        @keyframes atmosphericPulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.95; }
+        }
+
+        body > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(10, 10, 15, 0.85);
+            backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid rgba(59, 183, 120, 0.2);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-img {
+            height: 50px;
+            filter: drop-shadow(0 0 20px rgba(59, 183, 120, 0.6));
+            transition: all 0.4s ease;
+        }
+
+        .logo-img:hover {
+            filter: drop-shadow(0 0 35px rgba(59, 183, 120, 1));
+            transform: scale(1.05);
+        }
+
+        .logo-text {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-green);
+            letter-spacing: 3px;
+            text-decoration: none;
+            transition: all 0.3s;
+            text-shadow: 0 0 20px rgba(59, 183, 120, 0.5);
+        }
+
+        .logo-text:hover {
+            text-shadow: 0 0 30px rgba(59, 183, 120, 1), 0 0 50px rgba(59, 183, 120, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .nav-center {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-green);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        nav ul li {
+            position: relative;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--primary-green);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-green);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-item > a {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .dropdown-arrow {
+            font-size: 0.8rem;
+            transition: transform 0.3s;
+        }
+
+        .nav-item:hover .dropdown-arrow {
+            transform: rotate(180deg);
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: calc(100% + 15px);
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(20px);
+            border: 2px solid var(--primary-green);
+            border-radius: 4px;
+            min-width: 200px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+            z-index: 1001;
+        }
+
+        .nav-item:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            top: calc(100% + 10px);
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 1rem 1.5rem;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            border-bottom: 1px solid rgba(59, 183, 120, 0.1);
+        }
+
+        .dropdown-menu a:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-menu a:hover {
+            background: var(--primary-green);
+            color: #000;
+            padding-left: 2rem;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            z-index: 1002;
+        }
+
+        .mobile-menu-toggle span {
+            width: 30px;
+            height: 3px;
+            background: var(--primary-green);
+            transition: all 0.3s;
+            border-radius: 2px;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(8px, -8px);
+        }
+
+        .hero-customs {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 150px 5% 80px 5%;
+            text-align: center;
+            background: linear-gradient(180deg, rgba(59, 183, 120, 0.1) 0%, transparent 100%);
+        }
+
+        .hero-customs h1 {
+            font-size: 5rem;
+            font-weight: 700;
+            letter-spacing: 8px;
+            margin-bottom: 1.5rem;
+            color: var(--primary-green);
+            text-transform: uppercase;
+            text-shadow: 0 0 40px rgba(59, 183, 120, 0.7);
+            animation: titleReveal 1.2s ease-out;
+        }
+
+        @keyframes titleReveal {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-customs p {
+            font-size: 1.5rem;
+            color: var(--text-gray);
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            line-height: 1.8;
+        }
+
+        .customs-section {
+            padding: 6rem 5%;
+            background: #000;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 4rem;
+            color: var(--primary-green);
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            text-shadow: 0 0 30px rgba(59, 183, 120, 0.5);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--primary-green), transparent);
+            box-shadow: 0 0 20px rgba(59, 183, 120, 0.8);
+        }
+
+        .customs-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .customs-card {
+            background: #fff;
+            padding: 3rem 2rem;
+            border: 3px solid var(--primary-green);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .customs-card::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: radial-gradient(circle, rgba(59, 183, 120, 0.1), transparent);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+            border-radius: 50%;
+        }
+
+        .customs-card:hover::before {
+            width: 500px;
+            height: 500px;
+        }
+
+        .customs-card:hover {
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 20px 60px rgba(59, 183, 120, 0.5);
+        }
+
+        .customs-card h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-green);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+        }
+
+        .customs-card p {
+            font-size: 1.15rem;
+            color: #333;
+            line-height: 1.8;
+        }
+
+        .prize-section {
+            padding: 6rem 5%;
+            background: var(--card-bg);
+        }
+
+        .prize-grid {
+            max-width: 1200px;
+            margin: 3rem auto 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .prize-card {
+            background: #000;
+            border: 3px solid var(--primary-green);
+            padding: 2.5rem 2rem;
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+
+        .prize-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 50px rgba(59, 183, 120, 0.4);
+        }
+
+        .prize-amount {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--primary-green);
+            margin-bottom: 1rem;
+        }
+
+        .prize-label {
+            font-size: 1.2rem;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .schedule-section {
+            padding: 6rem 5%;
+            background: #000;
+        }
+
+        .schedule-container {
+            max-width: 900px;
+            margin: 3rem auto 0;
+            background: var(--card-bg);
+            border: 3px solid var(--primary-green);
+            padding: 3rem;
+        }
+
+        .schedule-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem;
+            border-bottom: 2px solid rgba(59, 183, 120, 0.2);
+            transition: all 0.3s;
+        }
+
+        .schedule-item:last-child {
+            border-bottom: none;
+        }
+
+        .schedule-item:hover {
+            background: rgba(59, 183, 120, 0.05);
+            padding-left: 2.5rem;
+        }
+
+        .schedule-day {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-green);
+            text-transform: uppercase;
+        }
+
+        .schedule-time {
+            font-size: 1.3rem;
+            color: #fff;
+        }
+
+        .rules-section {
+            padding: 6rem 5%;
+            background: var(--card-bg);
+        }
+
+        .rules-container {
+            max-width: 1000px;
+            margin: 3rem auto 0;
+        }
+
+        .rule-item {
+            background: #000;
+            border-left: 4px solid var(--primary-green);
+            padding: 2rem 2.5rem;
+            margin-bottom: 2rem;
+            transition: all 0.3s;
+        }
+
+        .rule-item:hover {
+            transform: translateX(15px);
+            box-shadow: 0 10px 30px rgba(59, 183, 120, 0.3);
+        }
+
+        .rule-item h4 {
+            font-size: 1.5rem;
+            color: var(--primary-green);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .rule-item p {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            line-height: 1.8;
+        }
+
+        .cta-section {
+            padding: 8rem 5%;
+            background: #000;
+            text-align: center;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+        }
+
+        .btn-discord {
+            background: #5865F2;
+            color: #fff;
+            padding: 1.5rem 4rem;
+            font-size: 1.3rem;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            letter-spacing: 2px;
+            font-family: 'Rajdhani', sans-serif;
+            text-transform: uppercase;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-discord::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn-discord:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn-discord:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 50px rgba(88, 101, 242, 0.6);
+            background: #4752C4;
+        }
+
+        .btn-twitch {
+            background: #9146FF;
+            color: #fff;
+            padding: 1.5rem 4rem;
+            font-size: 1.3rem;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            letter-spacing: 2px;
+            font-family: 'Rajdhani', sans-serif;
+            text-transform: uppercase;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-twitch::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn-twitch:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn-twitch:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 50px rgba(145, 70, 255, 0.6);
+            background: #7C3AED;
+        }
+
+        footer {
+            padding: 4rem 5% 2rem;
+            background: #000;
+            color: #fff;
+            border-top: 3px solid var(--primary-green);
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-logo-section {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            align-items: flex-start;
+        }
+
+        .footer-logo-section img {
+            height: 60px;
+            width: auto;
+            object-fit: contain;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-copyright {
+            font-size: 0.95rem;
+            color: #ccc;
+            line-height: 1.6;
+        }
+
+        .footer-section h4 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-green);
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section ul li a {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--primary-green);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            background: transparent;
+            text-decoration: none;
+            color: var(--primary-green);
+        }
+
+        .social-links a:hover {
+            color: #2a9e5f;
+            transform: scale(1.15);
+        }
+
+        @media (max-width: 1200px) {
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+                gap: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-center {
+                font-size: 1rem;
+                letter-spacing: 1px;
+            }
+
+            .mobile-menu-toggle {
+                display: flex;
+            }
+
+            nav ul {
+                position: fixed;
+                top: 80px;
+                right: -100%;
+                width: 280px;
+                height: calc(100vh - 80px);
+                background: rgba(10, 10, 15, 0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                gap: 0;
+                padding: 2rem 0;
+                border-left: 2px solid var(--primary-green);
+                transition: right 0.4s ease;
+                overflow-y: auto;
+                box-shadow: -10px 0 30px rgba(0, 0, 0, 0.8);
+            }
+
+            nav ul.active {
+                right: 0;
+            }
+
+            nav ul li {
+                width: 100%;
+            }
+
+            nav ul li a {
+                padding: 1.2rem 2rem;
+                display: block;
+                border-bottom: 1px solid rgba(59, 183, 120, 0.1);
+            }
+
+            .nav-item .dropdown-menu {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                border: none;
+                border-radius: 0;
+                box-shadow: none;
+                background: rgba(0, 0, 0, 0.5);
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+            }
+
+            .nav-item.mobile-open .dropdown-menu {
+                max-height: 300px;
+            }
+
+            .nav-item > a {
+                justify-content: space-between;
+                width: 100%;
+            }
+
+            .dropdown-arrow {
+                transition: transform 0.3s;
+            }
+
+            .nav-item.mobile-open .dropdown-arrow {
+                transform: rotate(180deg);
+            }
+
+            .dropdown-menu a {
+                padding-left: 3rem;
+                font-size: 0.95rem;
+            }
+
+            .dropdown-menu a:hover {
+                padding-left: 3.5rem;
+            }
+
+            .hero-customs h1 {
+                font-size: 3rem;
+            }
+
+            .hero-customs p {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .customs-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .prize-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .schedule-item {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .rules-container {
+                padding: 0 1rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .logo-img {
+                height: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo-container">
+            <a href="index.html">
+                <img src="Kryptonewgreentransparentwhite.png" alt="Krypto Esports" class="logo-img">
+            </a>
+            <a href="index.html" class="logo-text">KRYPTO</a>
+        </div>
+        <div class="nav-center">Our Competitors Weakness</div>
+        <div class="mobile-menu-toggle" id="mobileMenuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul id="navMenu">
+            <li><a href="index.html">HOME</a></li>
+            <li class="nav-item">
+                <a href="#" class="dropdown-trigger">
+                    TEAM
+                    <span class="dropdown-arrow">▼</span>
+                </a>
+                <div class="dropdown-menu">
+                    <a href="#roster">Roster</a>
+                    <a href="#management">Management</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="dropdown-trigger">
+                    COMPETE
+                    <span class="dropdown-arrow">▼</span>
+                </a>
+                <div class="dropdown-menu">
+                    <a href="customs.html">Customs</a>
+                    <a href="#tournaments">Tournaments</a>
+                </div>
+            </li>
+            <li><a href="#shop">SHOP</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero-customs">
+        <div>
+            <h1>KRYPTO CUSTOMS</h1>
+            <p>Compete in high-stakes custom matches with real money on the line. Professional production, elite competition, and a community-driven competitive experience.</p>
+        </div>
+    </section>
+
+    <section class="customs-section">
+        <h2 class="section-title">What We Offer</h2>
+        <div class="customs-grid">
+            <div class="customs-card">
+                <h3>Cash Prizes</h3>
+                <p>Compete in high-stakes custom matches with real money on the line. Every game matters, every placement counts.</p>
+            </div>
+            <div class="customs-card">
+                <h3>Live on Twitch</h3>
+                <p>All customs streamed live with professional commentary and production quality. Watch the best compete in real-time.</p>
+            </div>
+            <div class="customs-card">
+                <h3>Community Driven</h3>
+                <p>Open to all skill levels. Rise through the ranks and prove yourself against the best players in the scene.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="prize-section">
+        <h2 class="section-title">Prize Pool</h2>
+        <div class="prize-grid">
+            <div class="prize-card">
+                <div class="prize-amount">$500</div>
+                <div class="prize-label">1st Place</div>
+            </div>
+            <div class="prize-card">
+                <div class="prize-amount">$300</div>
+                <div class="prize-label">2nd Place</div>
+            </div>
+            <div class="prize-card">
+                <div class="prize-amount">$200</div>
+                <div class="prize-label">3rd Place</div>
+            </div>
+            <div class="prize-card">
+                <div class="prize-amount">$1000+</div>
+                <div class="prize-label">Total Weekly</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="schedule-section">
+        <h2 class="section-title">Weekly Schedule</h2>
+        <div class="schedule-container">
+            <div class="schedule-item">
+                <div class="schedule-day">Monday</div>
+                <div class="schedule-time">7:00 PM EST</div>
+            </div>
+            <div class="schedule-item">
+                <div class="schedule-day">Wednesday</div>
+                <div class="schedule-time">7:00 PM EST</div>
+            </div>
+            <div class="schedule-item">
+                <div class="schedule-day">Friday</div>
+                <div class="schedule-time">8:00 PM EST</div>
+            </div>
+            <div class="schedule-item">
+                <div class="schedule-day">Sunday</div>
+                <div class="schedule-time">6:00 PM EST</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="rules-section">
+        <h2 class="section-title">Rules & Guidelines</h2>
+        <div class="rules-container">
+            <div class="rule-item">
+                <h4>Eligibility</h4>
+                <p>All players must be registered in our Discord server and follow our community guidelines. Age restrictions may apply based on local regulations.</p>
+            </div>
+            <div class="rule-item">
+                <h4>Format</h4>
+                <p>Standard Battle Royale format with point-based scoring. Eliminations and placement both contribute to final standings.</p>
+            </div>
+            <div class="rule-item">
+                <h4>Fair Play</h4>
+                <p>Zero tolerance policy for cheating, teaming, or unsportsmanlike conduct. All matches are monitored and recorded.</p>
+            </div>
+            <div class="rule-item">
+                <h4>Prize Distribution</h4>
+                <p>Prizes are distributed within 7 business days after tournament
