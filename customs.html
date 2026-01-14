@@ -325,6 +325,7 @@
             transform: translate(-50%, -50%);
             animation: floatingGlow 8s ease-in-out infinite;
             z-index: 1;
+            display: none;
         }
 
         @keyframes floatingGlow {
@@ -335,6 +336,8 @@
         .hero-customs > div {
             position: relative;
             z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .hero-customs h1 {
@@ -350,8 +353,6 @@
             text-transform: uppercase;
             filter: drop-shadow(0 0 40px rgba(59, 183, 120, 0.7));
             animation: titleReveal 1.2s ease-out, gradientShift 4s ease infinite;
-            position: relative;
-            z-index: 1;
         }
 
         @keyframes titleReveal {
@@ -372,12 +373,17 @@
 
         .hero-customs p {
             font-size: 1.5rem;
-            color: var(--text-gray);
+            color: rgba(255, 255, 255, 0.9);
             max-width: 800px;
             margin: 0 auto 3rem;
             line-height: 1.8;
-            position: relative;
-            z-index: 1;
+        }
+
+        .hero-customs .cta-buttons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
         .customs-section {
