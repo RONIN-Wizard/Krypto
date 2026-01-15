@@ -358,11 +358,11 @@
         }
 
         .hero-section {
-            min-height: 60vh;
+            min-height: 70vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 150px 5% 80px;
+            padding: 150px 5% 100px;
             position: relative;
             overflow: hidden;
         }
@@ -374,7 +374,9 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(59, 183, 120, 0.1) 0%, transparent 50%);
+            background: 
+                linear-gradient(135deg, rgba(59, 183, 120, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at center, rgba(59, 183, 120, 0.1) 0%, transparent 70%);
             z-index: 0;
         }
 
@@ -386,114 +388,126 @@
         }
 
         .hero-title {
-            font-size: 5rem;
+            font-size: 6rem;
             font-weight: 700;
-            letter-spacing: 8px;
-            margin-bottom: 1.5rem;
+            letter-spacing: 10px;
+            margin-bottom: 2rem;
             text-transform: uppercase;
-            background: linear-gradient(45deg, var(--primary-green), #2a9e5f);
+            background: linear-gradient(45deg, var(--primary-green), #2a9e5f, var(--primary-green));
+            background-size: 200% auto;
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 0 40px rgba(59, 183, 120, 0.5));
-            animation: titlePulse 3s ease-in-out infinite;
+            filter: drop-shadow(0 0 50px rgba(59, 183, 120, 0.6));
+            animation: titleShine 4s ease-in-out infinite;
         }
 
-        @keyframes titlePulse {
-            0%, 100% { filter: drop-shadow(0 0 40px rgba(59, 183, 120, 0.5)); }
-            50% { filter: drop-shadow(0 0 60px rgba(59, 183, 120, 0.8)); }
+        @keyframes titleShine {
+            0%, 100% { 
+                background-position: 0% center;
+                filter: drop-shadow(0 0 50px rgba(59, 183, 120, 0.6)); 
+            }
+            50% { 
+                background-position: 100% center;
+                filter: drop-shadow(0 0 80px rgba(59, 183, 120, 1)); 
+            }
         }
 
         .hero-subtitle {
-            font-size: 1.8rem;
+            font-size: 2rem;
             color: var(--text-gray);
             font-weight: 400;
-            letter-spacing: 3px;
-            line-height: 1.6;
+            letter-spacing: 4px;
+            line-height: 1.8;
+            max-width: 900px;
+            margin: 0 auto;
         }
 
         .management-section {
-            padding: 100px 5%;
-            max-width: 1600px;
+            padding: 120px 5%;
+            max-width: 1800px;
             margin: 0 auto;
         }
 
         .section-intro {
             text-align: center;
-            max-width: 900px;
-            margin: 0 auto 100px;
+            max-width: 1000px;
+            margin: 0 auto 120px;
         }
 
         .section-intro h2 {
-            font-size: 3rem;
+            font-size: 3.5rem;
             font-weight: 700;
             color: var(--primary-green);
             text-transform: uppercase;
-            letter-spacing: 6px;
-            margin-bottom: 2rem;
+            letter-spacing: 8px;
+            margin-bottom: 2.5rem;
             position: relative;
             display: inline-block;
+            text-shadow: 0 0 40px rgba(59, 183, 120, 0.5);
         }
 
         .section-intro h2::after {
             content: '';
             position: absolute;
-            bottom: -15px;
+            bottom: -20px;
             left: 50%;
             transform: translateX(-50%);
-            width: 100px;
-            height: 3px;
+            width: 120px;
+            height: 4px;
             background: linear-gradient(90deg, transparent, var(--primary-green), transparent);
-            box-shadow: 0 0 20px rgba(59, 183, 120, 0.8);
+            box-shadow: 0 0 30px rgba(59, 183, 120, 1);
         }
 
         .section-intro p {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             color: var(--text-gray);
-            line-height: 1.9;
-            margin-top: 2rem;
+            line-height: 2;
+            margin-top: 3rem;
         }
 
         .management-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-            gap: 60px;
-            margin-top: 80px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 80px;
+            margin-top: 100px;
         }
 
         .management-card {
             position: relative;
-            background: #fff;
+            background: linear-gradient(145deg, #1a1a1a 0%, #0d0d0d 100%);
             border: 3px solid var(--primary-green);
             overflow: hidden;
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
+            transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(59, 183, 120, 0.2);
         }
 
         .management-card::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(59, 183, 120, 0.1), transparent);
-            transition: left 0.7s;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(59, 183, 120, 0.1), transparent);
+            transform: rotate(45deg);
+            transition: all 0.8s;
             z-index: 1;
         }
 
         .management-card:hover::before {
-            left: 100%;
+            transform: rotate(45deg) translate(50%, 50%);
         }
 
         .management-card:hover {
-            transform: translateY(-20px) scale(1.02);
-            box-shadow: 0 30px 80px rgba(59, 183, 120, 0.4), 0 0 60px rgba(59, 183, 120, 0.2);
+            transform: translateY(-30px) scale(1.05);
+            box-shadow: 0 40px 100px rgba(59, 183, 120, 0.5), 0 0 80px rgba(59, 183, 120, 0.4);
+            border-color: rgba(59, 183, 120, 1);
         }
 
         .card-image-wrapper {
             width: 100%;
-            height: 450px;
+            height: 500px;
             overflow: hidden;
             position: relative;
             background: linear-gradient(135deg, #000 0%, #1a1a1a 100%);
@@ -506,97 +520,119 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(180deg, transparent 60%, rgba(0,0,0,0.8) 100%);
+            background: linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.9) 100%);
             pointer-events: none;
+            z-index: 2;
         }
 
         .card-image {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.7s ease;
+            transition: transform 0.8s ease;
+            position: relative;
+            z-index: 1;
         }
 
         .management-card:hover .card-image {
-            transform: scale(1.1);
+            transform: scale(1.15);
         }
 
         .card-content {
-            padding: 3rem 2.5rem;
-            background: #fff;
+            padding: 3.5rem 3rem;
+            background: linear-gradient(180deg, #000 0%, #0a0a0a 100%);
             position: relative;
-            z-index: 2;
+            z-index: 3;
         }
 
         .role-badge {
             display: inline-block;
-            background: var(--primary-green);
+            background: linear-gradient(135deg, var(--primary-green), #2a9e5f);
             color: #000;
-            padding: 0.6rem 1.5rem;
-            font-size: 0.9rem;
+            padding: 0.8rem 2rem;
+            font-size: 1rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 4px 15px rgba(59, 183, 120, 0.4);
+            letter-spacing: 3px;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 20px rgba(59, 183, 120, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .role-badge::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .management-card:hover .role-badge::before {
+            left: 100%;
         }
 
         .card-name {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             font-weight: 700;
-            color: #000;
-            margin-bottom: 0.5rem;
-            letter-spacing: 2px;
+            color: #fff;
+            margin-bottom: 0.8rem;
+            letter-spacing: 3px;
+            text-shadow: 0 0 20px rgba(59, 183, 120, 0.3);
         }
 
         .card-alias {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             color: var(--primary-green);
             font-weight: 600;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
             font-style: italic;
+            text-shadow: 0 0 15px rgba(59, 183, 120, 0.5);
         }
 
         .card-divider {
-            width: 60px;
-            height: 3px;
-            background: var(--primary-green);
-            margin: 1.5rem 0;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-green), transparent);
+            margin: 2rem 0;
+            box-shadow: 0 0 10px rgba(59, 183, 120, 0.8);
         }
 
         .card-bio {
-            font-size: 1.1rem;
-            color: #333;
-            line-height: 1.8;
-            margin-bottom: 2rem;
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            line-height: 2;
+            margin-bottom: 2.5rem;
         }
 
-        .card-stats {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
+        .card-social {
+            display: flex;
             gap: 1.5rem;
-            margin-top: 2rem;
             padding-top: 2rem;
-            border-top: 2px solid #f0f0f0;
+            border-top: 2px solid rgba(59, 183, 120, 0.2);
         }
 
-        .stat-item {
-            text-align: center;
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            color: #666;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-
-        .stat-value {
-            font-size: 1.8rem;
+        .social-link {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(59, 183, 120, 0.1);
+            border: 2px solid var(--primary-green);
             color: var(--primary-green);
-            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-link:hover {
+            background: var(--primary-green);
+            color: #000;
+            transform: translateY(-5px) rotate(360deg);
+            box-shadow: 0 10px 30px rgba(59, 183, 120, 0.5);
         }
 
         footer {
@@ -688,29 +724,30 @@
             transform: scale(1.15);
         }
 
-        @media (max-width: 1200px) {
+        @media (max-width: 1400px) {
             .management-grid {
-                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+                grid-template-columns: repeat(2, 1fr);
+                gap: 60px;
             }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 900px) {
+            .management-grid {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+
             .hero-title {
-                font-size: 3rem;
-                letter-spacing: 4px;
+                font-size: 3.5rem;
+                letter-spacing: 5px;
             }
 
             .hero-subtitle {
-                font-size: 1.3rem;
-            }
-
-            .management-grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
+                font-size: 1.5rem;
             }
 
             .section-intro h2 {
-                font-size: 2rem;
+                font-size: 2.5rem;
             }
 
             .footer-content {
@@ -763,7 +800,7 @@
     <section class="hero-section">
         <div class="hero-content">
             <h1 class="hero-title">LEADERSHIP</h1>
-            <p class="hero-subtitle">The visionaries behind Krypto's competitive excellence<br>and strategic innovation</p>
+            <p class="hero-subtitle">The visionaries driving Krypto's competitive excellence<br>and strategic innovation in esports</p>
         </div>
     </section>
 
@@ -784,15 +821,10 @@
                     <p class="card-alias">"Wizard"</p>
                     <div class="card-divider"></div>
                     <p class="card-bio">A strategic mastermind with a vision for elevating competitive esports. Antonio brings innovative leadership and a commitment to building sustainable excellence in the industry.</p>
-                    <div class="card-stats">
-                        <div class="stat-item">
-                            <div class="stat-label">Experience</div>
-                            <div class="stat-value">2+ Years</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-label">Role</div>
-                            <div class="stat-value">CEO</div>
-                        </div>
+                    <div class="card-social">
+                        <a href="https://x.com/Wizardishim" target="_blank" rel="noopener noreferrer" class="social-link" title="X (Twitter)">
+                            <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -807,15 +839,10 @@
                     <p class="card-alias">"Goldenknows"</p>
                     <div class="card-divider"></div>
                     <p class="card-bio">With exceptional business acumen and deep gaming knowledge, David drives operational strategy and fosters partnerships that position Krypto at the forefront of competitive gaming.</p>
-                    <div class="card-stats">
-                        <div class="stat-item">
-                            <div class="stat-label">Experience</div>
-                            <div class="stat-value">2+ Years</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-label">Role</div>
-                            <div class="stat-value">CEO</div>
-                        </div>
+                    <div class="card-social">
+                        <a href="https://x.com/GoldenKnows" target="_blank" rel="noopener noreferrer" class="social-link" title="X (Twitter)">
+                            <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -830,15 +857,10 @@
                     <p class="card-alias">"Ray"</p>
                     <div class="card-divider"></div>
                     <p class="card-bio">A dynamic leader focused on talent development and competitive performance. Kaden ensures Krypto maintains its edge through cutting-edge training methodologies and team culture.</p>
-                    <div class="card-stats">
-                        <div class="stat-item">
-                            <div class="stat-label">Experience</div>
-                            <div class="stat-value">2+ Years</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-label">Role</div>
-                            <div class="stat-value">CEO</div>
-                        </div>
+                    <div class="card-social">
+                        <a href="https://x.com/rayv2s" target="_blank" rel="noopener noreferrer" class="social-link" title="X (Twitter)">
+                            <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -858,4 +880,98 @@
                         <svg width="28" height="28" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
                     </a>
                     <a href="#" target="_blank" rel="noopener noreferrer" title="TikTok">
-                        <svg width="28" height="28" fill="currentColor" viewBox="0 0 24 24"><path d="M19
+                        <svg width="28" height="28" fill="currentColor" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>
+                    </a>
+                    <a href="#" target="_blank" rel="noopener noreferrer" title="Twitch">
+                        <svg width="28" height="28" fill="currentColor" viewBox="0 0 24 24"><path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714Z"/></svg>
+                    </a>
+                    <a href="#" target="_blank" rel="noopener noreferrer" title="Discord">
+                        <svg width="28" height="28" fill="currentColor" viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0 a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>ABOUT</h4>
+                <ul>
+                    <li><a href="index.html#about">Who we are</a></li>
+                    <li><a href="tournaments.html">Championships</a></li>
+                    <li><a href="partners.html">Partners</a></li>
+                    <li><a href="management.html">Management Team</a></li>
+                    <li><a href="brand.html">Brand Toolkit</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>COMPANY</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="roster.html">Team</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="partners.html">Partners</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>CONTACT</h4>
+                <ul>
+                    <li><a href="mailto:contact@kryptoesports.com">Business Inquiries</a></li>
+                    <li><a href="presskit.html">Press Kit</a></li>
+                    <li><a href="support.html">Support</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const navMenu = document.getElementById('navMenu');
+        const dropdownTriggers = document.querySelectorAll('.dropdown-trigger');
+
+        mobileMenuToggle.addEventListener('click', () => {
+            mobileMenuToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Mobile Dropdown Toggle
+        dropdownTriggers.forEach(trigger => {
+            trigger.addEventListener('click', (e) => {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    const parentItem = trigger.closest('.nav-item');
+                    parentItem.classList.toggle('mobile-open');
+                }
+            });
+        });
+
+        // Close mobile menu when clicking a link
+        const navLinks = navMenu.querySelectorAll('a:not(.dropdown-trigger)');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    mobileMenuToggle.classList.remove('active');
+                    navMenu.classList.remove('active');
+                }
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth <= 768) {
+                if (!e.target.closest('nav')) {
+                    mobileMenuToggle.classList.remove('active');
+                    navMenu.classList.remove('active');
+                }
+            }
+        });
+    </script>
+</body>
+</html>
