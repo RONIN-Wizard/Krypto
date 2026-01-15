@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Management Team | Krypto Esports</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-green: #3BB778;
+            --dark-bg: #0a0a0f;
+            --card-bg: #13131a;
+            --text-gray: #a0a0b0;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #000;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-green);
+            border-radius: 6px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #2a9e5f;
+        }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background: var(--dark-bg);
+            color: #fff;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(ellipse at top, rgba(59, 183, 120, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at bottom, rgba(59, 183, 120, 0.1) 0%, transparent 50%),
+                linear-gradient(rgba(10, 10, 15, 0.95), rgba(10, 10, 15, 0.95)),
+                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(59, 183, 120, 0.03) 2px, rgba(59, 183, 120, 0.03) 4px),
+                repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(59, 183, 120, 0.03) 2px, rgba(59, 183, 120, 0.03) 4px);
+            pointer-events: none;
+            z-index: 0;
+            animation: atmosphericPulse 8s ease-in-out infinite;
+        }
+
+        @keyframes atmosphericPulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.95; }
+        }
+
+        body > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(10, 10, 15, 0.85);
+            backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid rgba(59, 183, 120, 0.2);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(10, 10, 15, 0.95);
+            padding: 1rem 5%;
+            box-shadow: 0 8px 40px rgba(59, 183, 120, 0.15);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-img {
+            height: 50px;
+            filter: drop-shadow(0 0 20px rgba(59, 183, 120, 0.6));
+            transition: all 0.4s ease;
+            animation: logoGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes logoGlow {
+            0%, 100% { filter: drop-shadow(0 0 20px rgba(59, 183, 120, 0.6)); }
+            50% { filter: drop-shadow(0 0 30px rgba(59, 183, 120, 0.9)); }
+        }
+
+        .logo-img:hover {
+            filter: drop-shadow(0 0 35px rgba(59, 183, 120, 1));
+            transform: scale(1.05);
+        }
+
+        .logo-text {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-green);
+            letter-spacing: 3px;
+            text-decoration: none;
+            transition: all 0.3s;
+            text-shadow: 0 0 20px rgba(59, 183, 120, 0.5);
+        }
+
+        .logo-text:hover {
+            text-shadow: 0 0 30px rgba(59, 183, 120, 1), 0 0 50px rgba(59, 183, 120, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .nav-center {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-green);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        nav ul li {
+            position: relative;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-item > a {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .dropdown-arrow {
+            font-size: 0.8rem;
+            transition: transform 0.3s;
+        }
+
+        .nav-item:hover .dropdown-arrow {
+            transform: rotate(180deg);
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: calc(100% + 15px);
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(20px);
+            border: 2px solid var(--primary-green);
+            border-radius: 4px;
+            min-width: 200px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+            z-index: 1001;
+        }
+
+        .nav-item:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            top: calc(100% + 10px);
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 1rem 1.5rem;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            border-bottom: 1px solid rgba(59, 183, 120, 0.1);
+        }
+
+        .dropdown-menu a:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-menu a:hover {
+            background: var(--primary-green);
+            color: #000;
+            padding-left: 2rem;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            z-index: 1002;
+        }
+
+        .mobile-menu-toggle span {
+            width: 30px;
+            height: 3px;
+            background: var(--primary-green);
+            transition: all 0.3s;
+            border-radius: 2px;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(8px, -8px);
+        }
+
+        @media (max-width: 768px) {
+            .nav-center {
+                font-size: 1rem;
+                letter-spacing: 1px;
+            }
+
+            .mobile-menu-toggle {
+                display: flex;
+            }
+
+            nav ul {
+                position: fixed;
+                top: 80px;
+                right: -100%;
+                width: 280px;
+                height: calc(100vh - 80px);
+                background: rgba(10, 10, 15, 0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                gap: 0;
+                padding: 2rem 0;
+                border-left: 2px solid var(--primary-green);
+                transition: right 0.4s ease;
+                overflow-y: auto;
+                box-shadow: -10px 0 30px rgba(0, 0, 0, 0.8);
+            }
+
+            nav ul.active {
+                right: 0;
+            }
+
+            nav ul li {
+                width: 100%;
+            }
+
+            nav ul li a {
+                padding: 1.2rem 2rem;
+                display: block;
+                border-bottom: 1px solid rgba(59, 183, 120, 0.1);
+            }
+
+            .nav-item .dropdown-menu {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                border: none;
+                border-radius: 0;
+                box-shadow: none;
+                background: rgba(0, 0, 0, 0.5);
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+            }
+
+            .nav-item.mobile-open .dropdown-menu {
+                max-height: 300px;
+            }
+
+            .nav-item > a {
+                justify-content: space-between;
+                width: 100%;
+            }
+
+            .dropdown-arrow {
+                transition: transform 0.3s;
+            }
+
+            .nav-item.mobile-open .dropdown-arrow {
+                transform: rotate(180deg);
+            }
+
+            .dropdown-menu a {
+                padding-left: 3rem;
+                font-size: 0.95rem;
+            }
+
+            .dropdown-menu a:hover {
+                padding-left: 3.5rem;
+            }
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--primary-green);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-green);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .hero-section {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 150px 5% 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(59, 183, 120, 0.1) 0%, transparent 50%);
+            z-index: 0;
+        }
+
+        .hero-content {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+        }
+
+        .hero-title {
+            font-size: 5rem;
+            font-weight: 700;
+            letter-spacing: 8px;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            background: linear-gradient(45deg, var(--primary-green), #2a9e5f);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 40px rgba(59, 183, 120, 0.5));
+            animation: titlePulse 3s ease-in-out infinite;
+        }
+
+        @keyframes titlePulse {
+            0%, 100% { filter: drop-shadow(0 0 40px rgba(59, 183, 120, 0.5)); }
+            50% { filter: drop-shadow(0 0 60px rgba(59, 183, 120, 0.8)); }
+        }
+
+        .hero-subtitle {
+            font-size: 1.8rem;
+            color: var(--text-gray);
+            font-weight: 400;
+            letter-spacing: 3px;
+            line-height: 1.6;
+        }
+
+        .management-section {
+            padding: 100px 5%;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .section-intro {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto 100px;
+        }
+
+        .section-intro h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-green);
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-intro h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--primary-green), transparent);
+            box-shadow: 0 0 20px rgba(59, 183, 120, 0.8);
+        }
+
+        .section-intro p {
+            font-size: 1.3rem;
+            color: var(--text-gray);
+            line-height: 1.9;
+            margin-top: 2rem;
+        }
+
+        .management-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 60px;
+            margin-top: 80px;
+        }
+
+        .management-card {
+            position: relative;
+            background: #fff;
+            border: 3px solid var(--primary-green);
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .management-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(59, 183, 120, 0.1), transparent);
+            transition: left 0.7s;
+            z-index: 1;
+        }
+
+        .management-card:hover::before {
+            left: 100%;
+        }
+
+        .management-card:hover {
+            transform: translateY(-20px) scale(1.02);
+            box-shadow: 0 30px 80px rgba(59, 183, 120, 0.4), 0 0 60px rgba(59, 183, 120, 0.2);
+        }
+
+        .card-image-wrapper {
+            width: 100%;
+            height: 450px;
+            overflow: hidden;
+            position: relative;
+            background: linear-gradient(135deg, #000 0%, #1a1a1a 100%);
+        }
+
+        .card-image-wrapper::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, transparent 60%, rgba(0,0,0,0.8) 100%);
+            pointer-events: none;
+        }
+
+        .card-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s ease;
+        }
+
+        .management-card:hover .card-image {
+            transform: scale(1.1);
+        }
+
+        .card-content {
+            padding: 3rem 2.5rem;
+            background: #fff;
+            position: relative;
+            z-index: 2;
+        }
+
+        .role-badge {
+            display: inline-block;
+            background: var(--primary-green);
+            color: #000;
+            padding: 0.6rem 1.5rem;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 15px rgba(59, 183, 120, 0.4);
+        }
+
+        .card-name {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+        }
+
+        .card-alias {
+            font-size: 1.5rem;
+            color: var(--primary-green);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .card-divider {
+            width: 60px;
+            height: 3px;
+            background: var(--primary-green);
+            margin: 1.5rem 0;
+        }
+
+        .card-bio {
+            font-size: 1.1rem;
+            color: #333;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .card-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 2px solid #f0f0f0;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .stat-value {
+            font-size: 1.8rem;
+            color: var(--primary-green);
+            font-weight: 700;
+        }
+
+        footer {
+            padding: 4rem 5% 2rem;
+            background: #000;
+            color: #fff;
+            border-top: 3px solid var(--primary-green);
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-logo-section {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            align-items: flex-start;
+        }
+
+        .footer-logo-section img {
+            height: 60px;
+            width: auto;
+            object-fit: contain;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-copyright {
+            font-size: 0.95rem;
+            color: #ccc;
+            line-height: 1.6;
+        }
+
+        .footer-section h4 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-green);
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section ul li a {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--primary-green);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            background: transparent;
+            text-decoration: none;
+            color: var(--primary-green);
+        }
+
+        .social-links a:hover {
+            color: #2a9e5f;
+            transform: scale(1.15);
+        }
+
+        @media (max-width: 1200px) {
+            .management-grid {
+                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 3rem;
+                letter-spacing: 4px;
+            }
+
+            .hero-subtitle {
+                font-size: 1.3rem;
+            }
+
+            .management-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .section-intro h2 {
+                font-size: 2rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo-container">
+            <a href="index.html">
+                <img src="Kryptonewgreentransparentwhite.png" alt="Krypto Esports" class="logo-img">
+            </a>
+            <a href="index.html" class="logo-text">KRYPTO</a>
+        </div>
+        <div class="nav-center">Our Competitors Weakness</div>
+        <div class="mobile-menu-toggle" id="mobileMenuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul id="navMenu">
+            <li><a href="index.html">HOME</a></li>
+            <li class="nav-item">
+                <a href="#" class="dropdown-trigger">
+                    TEAM
+                    <span class="dropdown-arrow">▼</span>
+                </a>
+                <div class="dropdown-menu">
+                    <a href="roster.html">Roster</a>
+                    <a href="management.html">Management</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="dropdown-trigger">
+                    COMPETE
+                    <span class="dropdown-arrow">▼</span>
+                </a>
+                <div class="dropdown-menu">
+                    <a href="customs.html">Customs</a>
+                    <a href="tournaments.html">Tournaments</a>
+                </div>
+            </li>
+            <li><a href="shop.html">SHOP</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title">LEADERSHIP</h1>
+            <p class="hero-subtitle">The visionaries behind Krypto's competitive excellence<br>and strategic innovation</p>
+        </div>
+    </section>
+
+    <section class="management-section">
+        <div class="section-intro">
+            <h2>Executive Team</h2>
+            <p>Our leadership combines deep industry expertise with a passion for competitive gaming. Together, they guide Krypto's strategic vision and operational excellence.</p>
+        </div>
+
+        <div class="management-grid">
+            <div class="management-card">
+                <div class="card-image-wrapper">
+                    <img src="fidalgo.webp" alt="Antonio Alcantar" class="card-image">
+                </div>
+                <div class="card-content">
+                    <div class="role-badge">Chief Executive Officer</div>
+                    <h3 class="card-name">Antonio Alcantar</h3>
+                    <p class="card-alias">"Wizard"</p>
+                    <div class="card-divider"></div>
+                    <p class="card-bio">A strategic mastermind with a vision for elevating competitive esports. Antonio brings innovative leadership and a commitment to building sustainable excellence in the industry.</p>
+                    <div class="card-stats">
+                        <div class="stat-item">
+                            <div class="stat-label">Experience</div>
+                            <div class="stat-value">2+ Years</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-label">Role</div>
+                            <div class="stat-value">CEO</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="management-card">
+                <div class="card-image-wrapper">
+                    <img src="David.jpg" alt="David Eze" class="card-image">
+                </div>
+                <div class="card-content">
+                    <div class="role-badge">Chief Executive Officer</div>
+                    <h3 class="card-name">David Eze</h3>
+                    <p class="card-alias">"Goldenknows"</p>
+                    <div class="card-divider"></div>
+                    <p class="card-bio">With exceptional business acumen and deep gaming knowledge, David drives operational strategy and fosters partnerships that position Krypto at the forefront of competitive gaming.</p>
+                    <div class="card-stats">
+                        <div class="stat-item">
+                            <div class="stat-label">Experience</div>
+                            <div class="stat-value">2+ Years</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-label">Role</div>
+                            <div class="stat-value">CEO</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="management-card">
+                <div class="card-image-wrapper">
+                    <img src="ray.jpg" alt="Kaden Ray" class="card-image">
+                </div>
+                <div class="card-content">
+                    <div class="role-badge">Chief Executive Officer</div>
+                    <h3 class="card-name">Kaden Ray</h3>
+                    <p class="card-alias">"Ray"</p>
+                    <div class="card-divider"></div>
+                    <p class="card-bio">A dynamic leader focused on talent development and competitive performance. Kaden ensures Krypto maintains its edge through cutting-edge training methodologies and team culture.</p>
+                    <div class="card-stats">
+                        <div class="stat-item">
+                            <div class="stat-label">Experience</div>
+                            <div class="stat-value">2+ Years</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-label">Role</div>
+                            <div class="stat-value">CEO</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo-section">
+                <img src="Kryptonewgreentransparentwhite.png" alt="Krypto Esports">
+                <p class="footer-copyright">© 2026 Krypto Esports. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="https://x.com/KryptoGGs" target="_blank" rel="noopener noreferrer" title="X (Twitter)">
+                        <svg width="28" height="28" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    </a>
+                    <a href="https://www.youtube.com/@Kryptoggss" target="_blank" rel="noopener noreferrer" title="YouTube">
+                        <svg width="28" height="28" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                    </a>
+                    <a href="#" target="_blank" rel="noopener noreferrer" title="TikTok">
+                        <svg width="28" height="28" fill="currentColor" viewBox="0 0 24 24"><path d="M19
