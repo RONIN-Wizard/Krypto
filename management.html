@@ -507,7 +507,7 @@
 
         .card-image-wrapper {
             width: 100%;
-            height: 500px;
+            height: 400px;
             overflow: hidden;
             position: relative;
             background: linear-gradient(135deg, #000 0%, #1a1a1a 100%);
@@ -529,17 +529,13 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.8s ease;
+            transition: none;
             position: relative;
             z-index: 1;
         }
 
-        .management-card:hover .card-image {
-            transform: scale(1.15);
-        }
-
         .card-content {
-            padding: 3.5rem 3rem;
+            padding: 2.5rem 2.5rem;
             background: linear-gradient(180deg, #000 0%, #0a0a0a 100%);
             position: relative;
             z-index: 3;
@@ -597,21 +593,14 @@
             width: 80px;
             height: 4px;
             background: linear-gradient(90deg, var(--primary-green), transparent);
-            margin: 2rem 0;
+            margin: 1.5rem 0;
             box-shadow: 0 0 10px rgba(59, 183, 120, 0.8);
-        }
-
-        .card-bio {
-            font-size: 1.2rem;
-            color: var(--text-gray);
-            line-height: 2;
-            margin-bottom: 2.5rem;
         }
 
         .card-social {
             display: flex;
             gap: 1.5rem;
-            padding-top: 2rem;
+            padding-top: 1.5rem;
             border-top: 2px solid rgba(59, 183, 120, 0.2);
         }
 
@@ -633,6 +622,47 @@
             color: #000;
             transform: translateY(-5px) rotate(360deg);
             box-shadow: 0 10px 30px rgba(59, 183, 120, 0.5);
+        }
+
+        .executive-quote {
+            max-width: 1200px;
+            margin: 100px auto 0;
+            text-align: center;
+            padding: 4rem 3rem;
+            background: linear-gradient(135deg, rgba(59, 183, 120, 0.05) 0%, rgba(0, 0, 0, 0.5) 100%);
+            border: 2px solid var(--primary-green);
+            border-left: 6px solid var(--primary-green);
+            position: relative;
+            box-shadow: 0 10px 40px rgba(59, 183, 120, 0.2);
+        }
+
+        .executive-quote::before {
+            content: '"';
+            position: absolute;
+            top: -20px;
+            left: 40px;
+            font-size: 8rem;
+            color: var(--primary-green);
+            opacity: 0.3;
+            font-family: Georgia, serif;
+        }
+
+        .quote-text {
+            font-size: 2rem;
+            font-weight: 500;
+            color: #fff;
+            line-height: 1.8;
+            font-style: italic;
+            margin-bottom: 2rem;
+            letter-spacing: 1px;
+        }
+
+        .quote-author {
+            font-size: 1.3rem;
+            color: var(--primary-green);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
         }
 
         footer {
@@ -820,7 +850,6 @@
                     <h3 class="card-name">Antonio Alcantar</h3>
                     <p class="card-alias">"Wizard"</p>
                     <div class="card-divider"></div>
-                    <p class="card-bio">A strategic mastermind with a vision for elevating competitive esports. Antonio brings innovative leadership and a commitment to building sustainable excellence in the industry.</p>
                     <div class="card-social">
                         <a href="https://x.com/Wizardishim" target="_blank" rel="noopener noreferrer" class="social-link" title="X (Twitter)">
                             <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
@@ -831,14 +860,13 @@
 
             <div class="management-card">
                 <div class="card-image-wrapper">
-                    <img src="David.jpg" alt="David Eze" class="card-image">
+                    <img src="david.jpg" alt="David Eze" class="card-image">
                 </div>
                 <div class="card-content">
                     <div class="role-badge">Chief Executive Officer</div>
                     <h3 class="card-name">David Eze</h3>
                     <p class="card-alias">"Goldenknows"</p>
                     <div class="card-divider"></div>
-                    <p class="card-bio">With exceptional business acumen and deep gaming knowledge, David drives operational strategy and fosters partnerships that position Krypto at the forefront of competitive gaming.</p>
                     <div class="card-social">
                         <a href="https://x.com/GoldenKnows" target="_blank" rel="noopener noreferrer" class="social-link" title="X (Twitter)">
                             <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
@@ -856,7 +884,6 @@
                     <h3 class="card-name">Kaden Ray</h3>
                     <p class="card-alias">"Ray"</p>
                     <div class="card-divider"></div>
-                    <p class="card-bio">A dynamic leader focused on talent development and competitive performance. Kaden ensures Krypto maintains its edge through cutting-edge training methodologies and team culture.</p>
                     <div class="card-social">
                         <a href="https://x.com/rayv2s" target="_blank" rel="noopener noreferrer" class="social-link" title="X (Twitter)">
                             <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
@@ -864,6 +891,11 @@
                     </div>
                 </div>
             </div>
+        </div>
+
+        <div class="executive-quote">
+            <p class="quote-text">"This isn't just a comeback—it's a statement. Krypto is built on consistency, credibility, and a refusal to settle. We're here to compete at the highest level and set a new standard."</p>
+            <p class="quote-author">— Executive Team</p>
         </div>
     </section>
 
