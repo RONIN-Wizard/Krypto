@@ -482,6 +482,23 @@
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(59, 183, 120, 0.2);
         }
 
+        .management-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-green), #2a9e5f, var(--primary-green));
+            background-size: 200% auto;
+            animation: shimmer 3s linear infinite;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
+        }
+
         .management-card::before {
             content: '';
             position: absolute;
@@ -489,7 +506,7 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(59, 183, 120, 0.1), transparent);
+            background: linear-gradient(45deg, transparent, rgba(59, 183, 120, 0.05), transparent);
             transform: rotate(45deg);
             transition: all 0.8s;
             z-index: 1;
@@ -511,6 +528,7 @@
             overflow: hidden;
             position: relative;
             background: linear-gradient(135deg, #000 0%, #1a1a1a 100%);
+            border-bottom: 3px solid var(--primary-green);
         }
 
         .card-image-wrapper::after {
@@ -520,9 +538,26 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.9) 100%);
+            background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.95) 100%);
             pointer-events: none;
             z-index: 2;
+        }
+
+        .card-image-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(59, 183, 120, 0.2) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.5s;
+            z-index: 3;
+        }
+
+        .management-card:hover .card-image-wrapper::before {
+            opacity: 1;
         }
 
         .card-image {
@@ -545,15 +580,16 @@
             display: inline-block;
             background: linear-gradient(135deg, var(--primary-green), #2a9e5f);
             color: #000;
-            padding: 0.8rem 2rem;
-            font-size: 1rem;
+            padding: 0.7rem 1.8rem;
+            font-size: 0.95rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 3px;
-            margin-bottom: 2rem;
+            letter-spacing: 2px;
+            margin-bottom: 1.8rem;
             box-shadow: 0 5px 20px rgba(59, 183, 120, 0.5);
             position: relative;
             overflow: hidden;
+            clip-path: polygon(0 0, 100% 0, 95% 100%, 0% 100%);
         }
 
         .role-badge::before {
@@ -563,8 +599,8 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: left 0.5s;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.6s;
         }
 
         .management-card:hover .role-badge::before {
@@ -572,29 +608,47 @@
         }
 
         .card-name {
-            font-size: 2.8rem;
+            font-size: 2.5rem;
             font-weight: 700;
             color: #fff;
-            margin-bottom: 0.8rem;
-            letter-spacing: 3px;
+            margin-bottom: 0.6rem;
+            letter-spacing: 2px;
             text-shadow: 0 0 20px rgba(59, 183, 120, 0.3);
+            position: relative;
         }
 
         .card-alias {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             color: var(--primary-green);
             font-weight: 600;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             font-style: italic;
             text-shadow: 0 0 15px rgba(59, 183, 120, 0.5);
         }
 
         .card-divider {
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary-green), transparent);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-green), #2a9e5f, transparent);
             margin: 1.5rem 0;
             box-shadow: 0 0 10px rgba(59, 183, 120, 0.8);
+            position: relative;
+        }
+
+        .card-divider::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 0;
+            background: #fff;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+            transition: width 0.6s ease;
+        }
+
+        .management-card:hover .card-divider::after {
+            width: 50%;
         }
 
         .card-social {
@@ -634,17 +688,6 @@
             border-left: 6px solid var(--primary-green);
             position: relative;
             box-shadow: 0 10px 40px rgba(59, 183, 120, 0.2);
-        }
-
-        .executive-quote::before {
-            content: '"';
-            position: absolute;
-            top: -20px;
-            left: 40px;
-            font-size: 8rem;
-            color: var(--primary-green);
-            opacity: 0.3;
-            font-family: Georgia, serif;
         }
 
         .quote-text {
